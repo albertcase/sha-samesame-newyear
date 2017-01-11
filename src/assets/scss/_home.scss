@@ -106,10 +106,9 @@ html,body{
       position: relative;
       z-index: 1;
     }
-
     .pipe{
       position: absolute;
-      right: 0;
+      right: -0.18rem;
       bottom: 0.05rem;
       @include size(1.36rem,4.83rem);
       background: url('../../images/pipe.png') no-repeat;
@@ -129,7 +128,7 @@ html,body{
     }
     &.screen-2{
       .pipe{
-        left: 0;
+        left: -0.18rem;
         transform: rotateZ(180deg);
       }
     }

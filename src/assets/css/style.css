@@ -1095,7 +1095,7 @@ html, body {
 }
 #pin-game .screen .pipe {
   position: absolute;
-  right: 0;
+  right: -0.18rem;
   bottom: 0.05rem;
   width: 1.36rem;
   height: 4.83rem;
@@ -1113,6 +1113,6 @@ html, body {
   margin-bottom: 0;
 }
 #pin-game .screen.screen-2 .pipe {
-  left: 0;
+  left: -0.18rem;
   transform: rotateZ(180deg);
 }
