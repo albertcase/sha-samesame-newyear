@@ -33,15 +33,15 @@ $delay-8: 3200ms;
 $delay-9: 3600ms;
 
 
-@media all and (orientation: landscape){
-
-  html{ font-size: calc(100vh / 375 * 50); }
-}
-
-@media all and (orientation: portrait){
-
-  html{ font-size: calc(100vw / 375 * 50); }
-}
+//@media all and (orientation: landscape){
+//
+//  html{ font-size: calc(100vh / 375 * 50); }
+//}
+//
+//@media all and (orientation: portrait){
+//
+//  html{ font-size: calc(100vw / 375 * 50); }
+//}
 
 html{
   -webkit-text-size-adjust: 100%;

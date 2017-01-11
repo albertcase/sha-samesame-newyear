@@ -14,7 +14,7 @@ var rename = require('gulp-rename'),
 
 //Define the app path
 var path = {
-    all:['./template/*.html','./src/assets/css/*.css','./src/assets/js/*.js','./src/assets/js/lib/*.js'],
+    all:['*.html','./src/assets/css/*.css','./src/assets/js/*.js','./src/assets/js/lib/*.js'],
     template:['./src/*.html'],
     css:['./src/assets/css/*.css'],
     js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/home.js'],
@@ -62,7 +62,7 @@ gulp.task('css',['clean'],function () {
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
-    gulp.watch(path.css,['css']);
+    gulp.watch(path.all,['css']);
 });
 
 // Default Task
