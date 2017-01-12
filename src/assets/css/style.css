@@ -1065,21 +1065,38 @@ html, body {
 }
 #pin-game .pin-content .role {
   position: absolute;
-  left: 0.1rem;
-  bottom: 0.1rem;
+  left: 0;
+  bottom: 0;
   z-index: 10;
-  width: 2.66rem;
-  height: 0.89rem;
+  width: 100%;
+  height: 1.3rem;
   overflow: hidden;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: 0% 0;
+  -webkit-mask-image: url("../../images/mask.png");
+  -webkit-mask-repeat: no-repeat;
 }
 #pin-game .pin-content .role .role-progress {
-  width: 100%;
-  height: 0.89rem;
+  position: absolute;
+  left: 0;
+  width: 3.66rem;
+  height: 100%;
   overflow: hidden;
+  -moz-transition: all 4s linear;
+  -o-transition: all 4s linear;
+  -webkit-transition: all 4s linear;
+  transition: all 4s linear;
 }
 #pin-game .pin-content .role .role-progress img {
   width: auto;
   height: 100%;
+}
+#pin-game .pin-content .role.go-left {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 #pin-game .screen {
   position: relative;

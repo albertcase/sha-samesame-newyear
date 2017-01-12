@@ -80,19 +80,41 @@ html,body{
   .pin-content{
     .role{
       position: absolute;
-      left: 0.1rem;
-      bottom: 0.1rem;
+      left: 0;
+      bottom: 0;
       z-index: 10;
-      @include size(2.66rem,0.89rem);
+      @include size(100%,1.3rem);
       overflow: hidden;
+      //@include transition(left 4s linear);
+      -webkit-mask-size: 100% 100%;
+      //-webkit-mask-position: 0% 0; //hide chicken
+      -webkit-mask-position: 0% 0; //show
+      -webkit-mask-image: url('../../images/mask.png');
+      -webkit-mask-repeat: no-repeat;
       .role-progress{
-        @include size(100%,0.89rem);
+        position: absolute;
+        left: 0;
+        @include size(3.66rem,100%);
+        //@include size(100%,1.6rem);
         overflow: hidden;
+        @include transition(all 4s linear);
         img{
           width: auto;
           height: 100%;
         }
       }
+      &.go-left{
+        @include transform(rotateY(180deg));
+      }
+      //.light-mask{
+      //  width: 100px;
+      //  height: 100px;
+      //  background: url('../../images/p1-t1.png') no-repeat;
+      //  background-size: 100%;
+      //  -webkit-mask-size: 100%;
+      //  -webkit-mask-position: 0% 0%;
+      //  -webkit-mask-image: url('../../images/p1-t1.png');
+      //}
     }
   }
   .screen{
