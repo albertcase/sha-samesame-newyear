@@ -1076,13 +1076,6 @@ html, body {
   -webkit-mask-image: url("../../images/mask.png");
   -webkit-mask-repeat: no-repeat;
 }
-#pin-game .pin-content .role.change {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
 #pin-game .pin-content .role .role-progress {
   position: absolute;
   left: 0;
@@ -1093,6 +1086,13 @@ html, body {
   -o-transition: all 2s linear;
   -webkit-transition: all 2s linear;
   transition: all 2s linear;
+}
+#pin-game .pin-content .role .role-progress.change {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 #pin-game .pin-content .role .role-progress img {
   width: auto;

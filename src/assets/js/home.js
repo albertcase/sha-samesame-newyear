@@ -5,6 +5,9 @@
         this.firstStop = true;
         this.secondStop = false;
         this.thirdStop = false;
+        /*each transition end set to ++*/
+        /*we have 8 transition end for chicken element*/
+        this.curStep = 0;
         //this.firstStop = true;
 
     };
@@ -51,21 +54,59 @@
         //    console.log('start');
         //});
         ele.addEventListener('transitionend',function(){
-            console.log('end');
-            console.log('dofirstAnimate');
+
+
+            switch (self.curStep)
+            {
+                case 0:
+                    console.log("floor1: from left to middle");
+                    break;
+                case 1:
+                    console.log("floor1: from middle to  right");
+                    break;
+                case 2:
+                    console.log("floor1-2: from floor1 right to floor2 right");
+                    break;
+                case 3:
+                    console.log("floor2: from right to middle");
+                    break;
+                case 4:
+                    console.log("floor2: from middle to left");
+                    break;
+                case 5:
+                    console.log("floor2-3: from floor2 left to floor3 left");
+                    break;
+                case 6:
+                    console.log("floor3: from floor3 left to middle");
+                    break;
+                case 7:
+                    console.log("floor3: from floor3 middle to right");
+                    break;
+                case 8:
+                    console.log("floor3: from floor3 right to out");
+                    break;
+            };
+            self.curStep++;
             self.enableMove = false;
-            //self.forbiddenMove();
+            ////self.forbiddenMove();
+            //if(self.firstStop && !self.secondStop && !self.thirdStop){
+            //    //    first
+            //    console.log('end');
+            //    console.log('dofirstAnimate');
+            //    return;
+            //}else if(!self.firstStop && self.secondStop && !self.thirdStop){
+            //    console.log('end');
+            //    console.log('dofirst2Animate');
+            //    $(ele).css('left',0);
+            //    $('.role').css('bottom','4rem');
+            //    //self.firstStop = false;
+            //    //self.secondStop = true;
+            //}
         });
 
 
         $('.screen-3').on('touchstart',function(){
-            //$(ele).css('left',curPos);
-
-            if(self.firstStop && !self.secondStop && !self.thirdStop){
-                //    first
-                //self.enableMove = true;
-                $(ele).css('left',maxPosX);
-            }
+            console.log('click');
         });
 
 
@@ -105,6 +146,8 @@
 
     //go surprise page
     controller.prototype.getSurprise = function(){
+        var self = this;
+        Common.gotoPin(2);
 
     };
 
