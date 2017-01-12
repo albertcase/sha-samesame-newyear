@@ -91,13 +91,16 @@ html,body{
       -webkit-mask-position: 0% 0; //show
       -webkit-mask-image: url('../../images/mask.png');
       -webkit-mask-repeat: no-repeat;
+      &.change{
+        @include transform(rotateY(180deg));
+      }
       .role-progress{
         position: absolute;
         left: 0;
         @include size(3.66rem,100%);
         //@include size(100%,1.6rem);
         overflow: hidden;
-        @include transition(all 4s linear);
+        @include transition(all 2s linear);
         img{
           width: auto;
           height: 100%;
