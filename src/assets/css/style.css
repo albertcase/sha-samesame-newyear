@@ -1135,6 +1135,8 @@ html, body {
 }
 #pin-game .screen.screen-1 {
   margin-bottom: 0;
+  background: url("../images/floor1.jpg") no-repeat;
+  background-size: 100%;
 }
 #pin-game .screen.screen-2 .pipe {
   left: -0.18rem;

@@ -9,6 +9,19 @@
         /*we have 8 transition end for chicken element*/
         this.curStep = 0;
         //this.firstStop = true;
+        this.floor1_imageArray = [],ArrLength=120;
+        for(var i=0;i<ArrLength;i++){
+            if(i<10){
+                newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_0000'+i+'.png';
+            }else if(i>9 && i<100){
+                newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_000'+i+'.png';
+            }else{
+                newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_00'+i+'.png';
+            }
+            this.floor1_imageArray.push(newstring);
+        }
+        //console.log(floor1_imageArray);
+
 
     };
     //init
@@ -20,6 +33,8 @@
         var imagesArray = [
             //baseurl+'logo.png',
         ];
+        imagesArray.join(self.floor1_imageArray);
+        //console.log(imagesArray);
         //var floor1_bg = [];
         //append floor 1 image sequece to imageArray
         for(var x=0;x<120;x++){
@@ -38,7 +53,7 @@
             onProgress: function(){
                 i++;
                 var progress = parseInt(i/imagesArray.length*100);
-                console.log(progress);
+                //console.log(progress);
                 //$('.preload .v-content').html('已加载'+progress+'%');
             },
             onComplete: function(){
@@ -70,6 +85,7 @@
     controller.prototype.doGame = function(){
         var self = this;
         Common.gotoPin(1);
+        self.animateForFloor3();
 
         var container = $('.pin-content');
         var scrren_1 = $('.screen-1'),
@@ -152,6 +168,29 @@
 
 
     };
+    controller.prototype.animateForFloor3 = function () {
+        var self = this;
+        var j = 0;
+        var reqAnimateNow = new reqAnimate($('#floor1 .l-bg img'),{
+            fps: 30,
+            totalFrames: 120,
+            //time: 0,
+            processAnimation: function(){
+                var imgName = self.floor1_imageArray[j];
+                if(j>118){
+                    j=0;
+                }
+                j++;
+                $('#floor1 .l-bg img').attr('src',imgName);
+            },
+            doneAnimation: function(){
+
+                //show box and letter
+            }
+        });
+        reqAnimateNow.start();
+
+    }
 
     //the element start move
     controller.prototype.startMove = function(e,startPos,endPos,step){
