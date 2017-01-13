@@ -151,6 +151,7 @@ html,body{
 
     &.screen-1{
       margin-bottom: 0;
+
     }
     &.screen-2{
       .pipe{
@@ -158,5 +159,70 @@ html,body{
         transform: rotateZ(180deg);
       }
     }
+  }
+}
+
+
+//for dialogue
+.dialogue{
+  @include size(6rem,4rem);
+  position: absolute;
+  z-index: 11;
+  .dialogue-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include size(6rem,4rem);
+    z-index: 1;
+  }
+  .dialogue-tips{
+    position: relative;
+    left: 2.4rem;
+    top: 0.6rem;
+    z-index: 2;
+    @include size(4.04rem,1.95rem);
+    background: url('../../images/dialogue-content-text.png') no-repeat;
+    background-size: 100%;
+  }
+  .dialogue-btn{
+    position: relative;
+    left: 3rem;
+    margin-top: 0.7rem;
+    z-index: 2;
+    background: #cd1350;
+    @include size(2.31rem,0.75rem);
+    border-radius:20px;
+    border: #5c2c14 2px solid;
+    box-sizing: border-box;
+    span{
+      display: block;
+      position: absolute;
+      bottom: 0.05rem;
+      left: -0.04rem;
+      @include size(2.31rem,0.75rem);
+      border-radius:20px;
+      border: #5c2c14 2px solid;
+      box-sizing: border-box;
+      background-color: #f4407b;
+      background-image: url('../../images/dialogue-btn-text.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: 0.35rem -10%;
+      @include animation(btnAni 1s steps(2) infinite);
+    }
+    @include keyframes(btnAni){
+      0%{
+        background-color: #cd1350;
+        bottom: -0.04rem;
+      }
+      100%{
+        background-color: #f4407b;
+        bottom: 0.1rem;
+      }
+    }
+  }
+  #floor1 &{
+    left: 1.2rem;
+    bottom: 2.3rem;
   }
 }

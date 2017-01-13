@@ -105,7 +105,7 @@
         });
 
 
-        $('.screen-3').on('touchstart',function(){
+        $('#floor1').on('touchstart',function(){
             console.log('click');
 
             if(self.curStep ==1){
