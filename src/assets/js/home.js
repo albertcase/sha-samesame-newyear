@@ -107,6 +107,10 @@
 
         $('.screen-3').on('touchstart',function(){
             console.log('click');
+
+            if(self.curStep ==1){
+                $(ele).css('left',maxPosX);
+            }
         });
 
 
