@@ -98,6 +98,8 @@
             minPosY = 0,maxPosY = container.height() - scrren_1.height();
         var firstPosX = container.width()/2 - $('.role .role-progress').width()/ 2,
             firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
+
+        var floor2PosY = $('#floor1').height()+10;
         var step = 10;
         console.log(firstLevelPosX);
         self.startMove(ele,minPosX,firstLevelPosX,step);
@@ -115,6 +117,7 @@
             {
                 case 0:
                     console.log("floor1: from left to middle");
+                    console.log(self.curStep);
                     $('#floor1 .dialogue').addClass('show');
                     $('#floor1 .dialogue-btn').on('touchstart',function(){
                         if(self.curStep ==1){
@@ -128,6 +131,10 @@
                     break;
                 case 1:
                     console.log("floor1: from middle to  right");
+                    if(self.curStep ==1){
+                        $('.role').css('bottom',floor2PosY);
+                        $(ele).addClass('change');
+                    }
                     break;
                 case 2:
                     console.log("floor1-2: from floor1 right to floor2 right");

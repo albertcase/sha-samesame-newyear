@@ -1086,6 +1086,7 @@ html, body {
   -webkit-mask-position: 0% 0;
   -webkit-mask-image: url("../images/mask.png");
   -webkit-mask-repeat: no-repeat;
+  background: red;
 }
 #pin-game .pin-content .role .role-progress {
   position: absolute;
