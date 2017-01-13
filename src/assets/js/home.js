@@ -15,7 +15,43 @@
     controller.prototype.init = function(){
         var self = this;
         //self.welcomePage();
-        self.doGame();
+        //self.doGame();
+        var baseurl = 'src/dist/images/';
+        var imagesArray = [
+            //baseurl+'logo.png',
+        ];
+        //var floor1_bg = [];
+        //append floor 1 image sequece to imageArray
+        for(var x=0;x<120;x++){
+            var newstring = '';
+            if(x<10){
+                newstring=baseurl+'floor_withoutbg/1floorwithoutbg_0000'+x+'.png';
+            }else if(x>9 && x<100){
+                newstring=baseurl+'floor_withoutbg/1floorwithoutbg_000'+x+'.png';
+            }else{
+                newstring=baseurl+'floor_withoutbg/1floorwithoutbg_00'+x+'.png';
+            }
+            imagesArray.push(newstring);
+        }
+        var i = 0;
+        new preLoader(imagesArray, {
+            onProgress: function(){
+                i++;
+                var progress = parseInt(i/imagesArray.length*100);
+                console.log(progress);
+                //$('.preload .v-content').html('已加载'+progress+'%');
+            },
+            onComplete: function(){
+                //
+                //
+                $('.preload').remove();
+                $('.container').addClass('fade');
+                self.doGame();
+
+            }
+        });
+
+
     };
 
     //welcome page

@@ -11,6 +11,9 @@ var rename = require('gulp-rename'),
     del = require('del'),
     babel = require("gulp-babel"),
     browserSync = require('browser-sync').create();
+//var imagemin = require('gulp-tinypng');
+//var imageminPngquant = require('imagemin-pngquant');
+var tinypng = require('gulp-tinypng-compress');
 
 //Define the app path
 var path = {
@@ -50,22 +53,26 @@ gulp.task('css',['clean'],function () {
 });
 
 // Concatenate & Minify
-//gulp.task('scripts_welcome',['clean'], function() {
-//    return gulp.src(path.welcomejs)
-//        .pipe(concat('welcome_all.js'))
-//        .pipe(gulp.dest('./src/dist'))
-//        .pipe(rename('welcome_all.min.js'))
-//        .pipe(uglify())
-//        .pipe(gulp.dest('./src/dist/js'));
-//});
+gulp.task("tinypng", function(){
+    gulp.src(['./src/assets/images/*.{png,jpg,jpeg}','./src/assets/images/*/*.{png,jpg,jpeg}'])
+        .pipe(tinypng({
+            key: 'oZ50Lys1WWQvg5-6KNTMq1yQKfrAZDub',
+            sigFile: 'images/.tinypng-sigs',
+            log: true
+        })).on('error', function(err) {
+            console.error(err.message);
+        })
+        .pipe(gulp.dest('./src/dist/images/'));
+});
 
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
+    gulp.watch(path.images,['tinypng']),
     gulp.watch(path.all,['css']);
 });
 
 // Default Task
-gulp.task('default', ['watch','css','browser-sync']);
+gulp.task('default', ['watch','css','tinypng','browser-sync']);
 
 

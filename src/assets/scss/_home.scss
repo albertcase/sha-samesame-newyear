@@ -68,7 +68,7 @@ html,body{
 //for home page
 #pin-home{
   .title{
-    background: url('../../images/p1-t1.png') no-repeat;
+    background: url('../images/p1-t1.png') no-repeat;
   }
 }
 
@@ -89,7 +89,7 @@ html,body{
       -webkit-mask-size: 100% 100%;
       //-webkit-mask-position: 0% 0; //hide chicken
       -webkit-mask-position: 0% 0; //show
-      -webkit-mask-image: url('../../images/mask.png');
+      -webkit-mask-image: url('../images/mask.png');
       -webkit-mask-repeat: no-repeat;
 
       .role-progress{
@@ -113,11 +113,11 @@ html,body{
       //.light-mask{
       //  width: 100px;
       //  height: 100px;
-      //  background: url('../../images/p1-t1.png') no-repeat;
+      //  background: url('../images/p1-t1.png') no-repeat;
       //  background-size: 100%;
       //  -webkit-mask-size: 100%;
       //  -webkit-mask-position: 0% 0%;
-      //  -webkit-mask-image: url('../../images/p1-t1.png');
+      //  -webkit-mask-image: url('../images/p1-t1.png');
       //}
     }
   }
@@ -137,7 +137,7 @@ html,body{
       right: -0.18rem;
       bottom: 0.05rem;
       @include size(1.36rem,4.83rem);
-      background: url('../../images/pipe.png') no-repeat;
+      background: url('../images/pipe.png') no-repeat;
       background-size: 100%;
     }
     .pipe-bg{
@@ -197,7 +197,7 @@ html,body{
     top: 0.6rem;
     z-index: 2;
     @include size(4.04rem,1.95rem);
-    background-image: url('../../images/dialogue-content-text.png');
+    background-image: url('../images/dialogue-content-text.png');
     background-repeat: no-repeat;
     background-size: 100%;
     #floor1 &{
@@ -232,7 +232,7 @@ html,body{
       border: #5c2c14 2px solid;
       box-sizing: border-box;
       background-color: #f4407b;
-      background-image: url('../../images/dialogue-btn-text.png');
+      background-image: url('../images/dialogue-btn-text.png');
       background-repeat: no-repeat;
       background-size: 100%;
       background-position: 0.35rem -10%;
