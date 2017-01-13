@@ -54,7 +54,7 @@
                 i++;
                 var progress = parseInt(i/imagesArray.length*100);
                 //console.log(progress);
-                //$('.preload .v-content').html('已加载'+progress+'%');
+                $('.preload .v-content').html('已加载'+progress+'%');
             },
             onComplete: function(){
                 //
@@ -92,12 +92,15 @@
             scrren_2 = $('.screen-2'),
             scrren_3 = $('.screen-3');
 
+        var ele = document.getElementById('action-chicken');
+        var chickenLength = $(ele).width()*0.6;
         var minPosX = 0,maxPosX = container.width(),
             minPosY = 0,maxPosY = container.height() - scrren_1.height();
-        var firstPosX = container.width()/2 - $('.role .role-progress').width()/2;
-        var ele = document.getElementById('action-chicken');
+        var firstPosX = container.width()/2 - $('.role .role-progress').width()/ 2,
+            firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
         var step = 10;
-        self.startMove(ele,minPosX,firstPosX,step);
+        console.log(firstLevelPosX);
+        self.startMove(ele,minPosX,firstLevelPosX,step);
         //var aaa = setTimeout(function(){
         //    self.forbiddenMove();
         //},4000);
@@ -112,6 +115,16 @@
             {
                 case 0:
                     console.log("floor1: from left to middle");
+                    $('#floor1 .dialogue').addClass('show');
+                    $('#floor1 .dialogue-btn').on('touchstart',function(){
+                        if(self.curStep ==1){
+                            $('#floor1 .dialogue').removeClass('show');
+                            //after animation
+                            $('#floor1 .level').addClass('after');
+                            $('#floor1 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $(ele).css('left',maxPosX);
+                        }
+                    });
                     break;
                 case 1:
                     console.log("floor1: from middle to  right");
@@ -157,13 +170,7 @@
         });
 
 
-        $('#floor1').on('touchstart',function(){
-            console.log('click');
 
-            if(self.curStep ==1){
-                $(ele).css('left',maxPosX);
-            }
-        });
 
 
 

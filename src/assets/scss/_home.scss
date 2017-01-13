@@ -148,10 +148,23 @@ html,body{
       z-index: 11;
       background-position: 0 100%;
     }
+    .level{
+      position: absolute;
+      bottom: 0;
+      width: 1.31rem;
+      height: 2.9rem;
+      left: 3.2rem;
+      z-index: 3;
+      &.after{
+        left: 2.4rem;
+        width: 2.98rem;
+        height: 4.8rem;
+      }
+    }
 
     &.screen-1{
       margin-bottom: 0;
-      background: url("../images/floor1.jpg") no-repeat;
+      background: url("../images/1floorbg.jpg") no-repeat;
       background-size: 100%;
     }
     &.screen-2{
@@ -263,4 +276,9 @@ html,body{
     left: 1.2rem;
     bottom: 2.3rem;
   }
+}
+
+//floor1
+#floor1{
+
 }
