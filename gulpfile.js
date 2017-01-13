@@ -52,6 +52,12 @@ gulp.task('css',['clean'],function () {
         .pipe(gulp.dest('./src/dist/css'));
 });
 
+gulp.task('copygif', function(){
+    gulp.src('./src/assets/images/*.gif')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./src/dist/images/'))
+});
+
 // Concatenate & Minify
 gulp.task("tinypng", function(){
     gulp.src(['./src/assets/images/*.{png,jpg,jpeg}','./src/assets/images/*/*.{png,jpg,jpeg}'])
@@ -68,11 +74,12 @@ gulp.task("tinypng", function(){
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
+    gulp.watch(path.images,['copygif']),
     gulp.watch(path.images,['tinypng']),
     gulp.watch(path.all,['css']);
 });
 
 // Default Task
-gulp.task('default', ['watch','css','tinypng','browser-sync']);
+gulp.task('default', ['watch','css','copygif','tinypng','browser-sync']);
 
 
