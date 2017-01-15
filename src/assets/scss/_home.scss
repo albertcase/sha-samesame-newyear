@@ -96,7 +96,8 @@ html,body{
       .role-progress{
         position: absolute;
         left: 0;
-        @include size(3.66rem,100%);
+        bottom: 0;
+        @include size(3.66rem,1.3rem);
         //@include size(100%,1.6rem);
         overflow: hidden;
         @include transition(all 2s linear);
@@ -120,6 +121,13 @@ html,body{
       //  -webkit-mask-position: 0% 0%;
       //  -webkit-mask-image: url('../images/p1-t1.png');
       //}
+      &.floor2mask{
+        -webkit-mask-image: url('../images/mask-floor2.png');
+      }
+      &.floor3mask{
+        height: 3.64rem;
+        -webkit-mask-image: url('../images/mask-floor3.png');
+      }
     }
   }
   .screen{

@@ -161,7 +161,7 @@
                     break;
                 case 5:
                     console.log("floor2-3: from floor2 left to floor3 left");
-                    $('.role').css('bottom',floor3PosY);
+                    $('.role').css('bottom',floor3PosY).addClass('floor3mask');
                     $(ele).css('left',firstLevelPosX+10);
                     break;
                 case 6:

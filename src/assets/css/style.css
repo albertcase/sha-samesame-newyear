@@ -1091,8 +1091,9 @@ html, body {
 #pin-game .pin-content .role .role-progress {
   position: absolute;
   left: 0;
+  bottom: 0;
   width: 3.66rem;
-  height: 100%;
+  height: 1.3rem;
   overflow: hidden;
   -moz-transition: all 2s linear;
   -o-transition: all 2s linear;
@@ -1116,6 +1117,13 @@ html, body {
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+}
+#pin-game .pin-content .role.floor2mask {
+  -webkit-mask-image: url("../images/mask-floor2.png");
+}
+#pin-game .pin-content .role.floor3mask {
+  height: 3.64rem;
+  -webkit-mask-image: url("../images/mask-floor3.png");
 }
 #pin-game .screen {
   position: relative;
