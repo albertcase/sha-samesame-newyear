@@ -300,3 +300,94 @@ html,body{
 #floor1{
 
 }
+
+//for pin3
+#pin-surprise{
+  .result-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+  .result-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.6rem;
+    margin-left: -1.7rem;
+    z-index: 2;
+    @include size(3.4rem,5.2rem);
+  }
+  .result{
+    display: none;
+    &.show{
+      display: block;
+    }
+  }
+  .btn{
+    position: relative;
+    background: #b7731b;
+    border: #5c2c14 2px solid;
+    span{
+      padding: 0;
+      display: block;
+      position: absolute;
+      @include size(100%,100%);
+      left: -0.04rem;
+      top: -0.04rem;
+      background: #e1a83b;
+      border: #5c2c14 2px solid;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: bold;
+      @include animation(tbAni 1s steps(2) infinite);
+      @include keyframes(tbAni){
+        0%{
+          top: -0.04rem;
+        }
+        100%{
+          top: -0.25rem;
+        }
+      }
+    }
+  }
+  .result-open{
+    .ot{
+      @include size(1.72rem,1rem);
+      margin: 0 auto;
+    }
+    .btn{
+      @include size(1.5rem,1.5rem);
+      border-radius: 100%;
+      margin: 0.55rem auto;
+      span{
+        //@include size(1.5rem,1.5rem);
+        border-radius: 100%;
+        line-height: 1.5rem;
+        top: -0.25rem;
+      }
+    }
+  }
+//  result
+  .result{
+    .btn{
+      @include size(2.7rem,0.8rem);
+      border-radius: 20px;
+      margin: 0 auto;
+      span{
+        @include size(2.7rem,0.8rem);
+        border-radius: 20px;
+        line-height: 0.8rem;
+        font-size: 0.36rem;
+      }
+    }
+  }
+//  result1
+  .result-1{
+    .r-img{
+      @include size(2.75rem,3.3rem);
+      margin: 0 auto 0.6rem;
+    }
+
+  }
+}

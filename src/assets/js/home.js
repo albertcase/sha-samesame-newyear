@@ -61,7 +61,8 @@
                 //
                 $('.preload').remove();
                 $('.container').addClass('fade');
-                self.doGame();
+                //self.doGame();
+                self.getSurprise();
 
             }
         });
@@ -276,6 +277,10 @@
     controller.prototype.getSurprise = function(){
         var self = this;
         Common.gotoPin(2);
+        $('.result-ask .btn').on('click', function(){
+            $('.result-ask').removeClass('show');
+            $('.result-1').addClass('show');
+        });
 
     };
 
