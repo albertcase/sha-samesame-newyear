@@ -1177,9 +1177,17 @@ html, body {
   background: url("../images/1floorbg.jpg") no-repeat;
   background-size: 100%;
 }
+#pin-game .screen.screen-2 {
+  background: url("../images/2floorbg.jpg") no-repeat;
+  background-size: 100%;
+}
 #pin-game .screen.screen-2 .pipe {
   left: -0.18rem;
   transform: rotateZ(180deg);
+}
+#pin-game .screen.screen-3 {
+  background: url("../images/3floorbg.jpg") no-repeat;
+  background-size: 100%;
 }
 
 .dialogue {
@@ -1240,7 +1248,7 @@ html, body {
   margin-top: 0.7rem;
   z-index: 2;
   background: #cd1350;
-  width: 2.31rem;
+  width: 2.4rem;
   height: 0.75rem;
   border-radius: 20px;
   border: #5c2c14 2px solid;
@@ -1251,7 +1259,7 @@ html, body {
   position: absolute;
   bottom: 0.05rem;
   left: -0.04rem;
-  width: 2.31rem;
+  width: 2.4rem;
   height: 0.75rem;
   border-radius: 20px;
   border: #5c2c14 2px solid;
@@ -1259,20 +1267,20 @@ html, body {
   background-color: #f4407b;
   background-image: url("../images/dialogue-btn-text.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: auto 300%;
   background-position: 0.35rem -10%;
   -webkit-animation: btnAni 1s steps(2) infinite;
   -moz-animation: btnAni 1s steps(2) infinite;
   animation: btnAni 1s steps(2) infinite;
 }
 #floor1 .dialogue .dialogue-btn span {
-  background-position: 0.35rem 83%;
+  background-position: 0.6rem 83%;
 }
 #floor2 .dialogue .dialogue-btn span {
-  background-position: 0.35rem -10%;
+  background-position: 0.6rem -10%;
 }
 #floor3 .dialogue .dialogue-btn span {
-  background-position: 0.35rem 33%;
+  background-position: 0.28rem 33%;
 }
 @-webkit-keyframes btnAni {
   0% {
