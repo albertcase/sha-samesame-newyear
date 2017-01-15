@@ -94,12 +94,13 @@
 
         var ele = document.getElementById('action-chicken');
         var chickenLength = $(ele).width()*0.6;
-        var minPosX = 0,maxPosX = container.width(),
+        var minPosX = -$(ele).width(),maxPosX = container.width(),
             minPosY = 0,maxPosY = container.height() - scrren_1.height();
         var firstPosX = container.width()/2 - $('.role .role-progress').width()/ 2,
             firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
 
-        var floor2PosY = $('#floor1').height()+10;
+        var floor2PosY = $('#floor1').height()+10,
+            floor3PosY = $('#floor1').height()*2+20;
         var step = 10;
         console.log(firstLevelPosX);
         self.startMove(ele,minPosX,firstLevelPosX,step);
@@ -110,6 +111,7 @@
         //ele.addEventListener('animationstart',function(){
         //    console.log('start');
         //});
+        self.curStep = 5;
         ele.addEventListener('transitionend',function(){
 
 
@@ -131,28 +133,54 @@
                     break;
                 case 1:
                     console.log("floor1: from middle to  right");
-                    if(self.curStep ==1){
-                        $('.role').css('bottom',floor2PosY);
-                        $(ele).addClass('change');
-                    }
+                    $('.role').css('bottom',floor2PosY);
+                    $(ele).addClass('change');
                     break;
                 case 2:
                     console.log("floor1-2: from floor1 right to floor2 right");
+                    $(ele).css('left',firstLevelPosX);
+
                     break;
                 case 3:
                     console.log("floor2: from right to middle");
+                    $('#floor2 .dialogue').addClass('show');
+                    $('#floor2 .dialogue-btn').on('touchstart',function(){
+                        if(self.curStep ==4){
+                            $('#floor2 .dialogue').removeClass('show');
+                            //after animation
+                            $('#floor2 .level').addClass('after');
+                            $('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $(ele).css('left',minPosX);
+                        }
+                    });
                     break;
                 case 4:
                     console.log("floor2: from middle to left");
+                    $('.role').css('bottom',floor3PosY);
+                    $(ele).removeClass('change');
                     break;
                 case 5:
                     console.log("floor2-3: from floor2 left to floor3 left");
+                    $('.role').css('bottom',floor3PosY);
+                    $(ele).css('left',firstLevelPosX+10);
                     break;
                 case 6:
                     console.log("floor3: from floor3 left to middle");
+                    $('#floor3 .dialogue').addClass('show');
+                    $('#floor3 .dialogue-btn').on('touchstart',function(){
+                        if(self.curStep ==7){
+                            $('#floor3 .dialogue').removeClass('show');
+                            //after animation
+                            $('#floor3 .level').addClass('after');
+                            $('#floor3 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $(ele).css('left',firstLevelPosX+50);
+                        }
+                    });
                     break;
                 case 7:
                     console.log("floor3: from floor3 middle to right");
+                    //transform the element
+                    //$(ele).css('left',firstLevelPosX+50);
                     break;
                 case 8:
                     console.log("floor3: from floor3 right to out");
