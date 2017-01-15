@@ -61,8 +61,9 @@
                 //
                 $('.preload').remove();
                 $('.container').addClass('fade');
+                self.welcomePage();
                 //self.doGame();
-                self.getSurprise();
+                //self.getSurprise();
 
             }
         });
@@ -192,6 +193,7 @@
                         left:firstLevelPosX+250,
                         bottom:60,
                     });
+                    self.getSurprise();
                     break;
             };
             self.curStep++;
