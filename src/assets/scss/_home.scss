@@ -309,13 +309,20 @@ html,body{
     top: 0;
     z-index: 1;
   }
+  .result-wrap{
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include size(7.5rem,12.04rem);
+    z-index: 2;
+  }
   .result-content{
     position: absolute;
     left: 50%;
     top: 50%;
     margin-top: -2.6rem;
     margin-left: -1.7rem;
-    z-index: 2;
+    z-index: 3;
     @include size(3.4rem,5.2rem);
   }
   .result{
@@ -352,6 +359,7 @@ html,body{
     }
   }
   .result-open{
+    display: none;
     .ot{
       @include size(1.72rem,1rem);
       margin: 0 auto;
@@ -369,17 +377,15 @@ html,body{
     }
   }
 //  result
-  .result{
-    .btn{
+  .btn-exchange{
+    @include size(2.7rem,0.8rem);
+    border-radius: 20px;
+    margin: 0 auto;
+    span{
       @include size(2.7rem,0.8rem);
       border-radius: 20px;
-      margin: 0 auto;
-      span{
-        @include size(2.7rem,0.8rem);
-        border-radius: 20px;
-        line-height: 0.8rem;
-        font-size: 0.36rem;
-      }
+      line-height: 0.8rem;
+      font-size: 0.36rem;
     }
   }
 //  result1
@@ -389,5 +395,16 @@ html,body{
       margin: 0 auto 0.6rem;
     }
 
+  }
+
+  .qrcode{
+    display: none;
+    .r-img{
+      @include size(2.14rem,3.96rem);
+      margin: 0.6rem auto;
+    }
+    .btn-exchange{
+      margin-top: 2.1rem;
+    }
   }
 }

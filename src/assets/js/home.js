@@ -277,9 +277,16 @@
     controller.prototype.getSurprise = function(){
         var self = this;
         Common.gotoPin(2);
+        //click ask btn, go exchange
         $('.result-ask .btn').on('click', function(){
             $('.result-ask').removeClass('show');
             $('.result-1').addClass('show');
+        });
+
+        //click go to qrcode part
+        $('.result .btn-exchange').on('click', function(){
+            $('.result').removeClass('show');
+            $('.qrcode').addClass('show');
         });
 
     };
