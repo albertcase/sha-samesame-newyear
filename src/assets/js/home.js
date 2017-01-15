@@ -111,7 +111,7 @@
         //ele.addEventListener('animationstart',function(){
         //    console.log('start');
         //});
-        self.curStep = 5;
+        //self.curStep = 5;
         ele.addEventListener('transitionend',function(){
 
 
@@ -180,10 +180,17 @@
                 case 7:
                     console.log("floor3: from floor3 middle to right");
                     //transform the element
-                    //$(ele).css('left',firstLevelPosX+50);
+                    $(ele).addClass('change').css({
+                        left:firstLevelPosX+100,
+                        bottom:0,
+                    });
                     break;
                 case 8:
                     console.log("floor3: from floor3 right to out");
+                    $(ele).addClass('changedirection').css({
+                        left:firstLevelPosX+250,
+                        bottom:60,
+                    });
                     break;
             };
             self.curStep++;

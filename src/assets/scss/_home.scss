@@ -91,7 +91,7 @@ html,body{
       -webkit-mask-position: 0% 0; //show
       -webkit-mask-image: url('../images/mask.png');
       -webkit-mask-repeat: no-repeat;
-      background: red;
+      //background: red;
 
       .role-progress{
         position: absolute;
@@ -103,6 +103,9 @@ html,body{
         @include transition(all 2s linear);
         &.change{
           @include transform(rotateY(180deg));
+        }
+        &.changedirection{
+          @include transform(rotateY(30deg) skewY(-10deg));
         }
         img{
           width: auto;
