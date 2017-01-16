@@ -9,17 +9,39 @@
         /*we have 8 transition end for chicken element*/
         this.curStep = 0;
         //this.firstStop = true;
-        this.floor1_imageArray = [],ArrLength=120;
+        this.floor1_imageArray = [];
+        this.facade_imageArray = [];
+        var ArrLength=120;
+        var newstring='',newstring2='';
         for(var i=0;i<ArrLength;i++){
             if(i<10){
                 newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_0000'+i+'.png';
+                newstring2='src/dist/images/'+'facade_alone/facadealone_0000'+i+'.png';
             }else if(i>9 && i<100){
                 newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_000'+i+'.png';
+                newstring2='src/dist/images/'+'facade_alone/facadealone_000'+i+'.png';
             }else{
                 newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_00'+i+'.png';
+                newstring2='src/dist/images/'+'facade_alone/facadealone_00'+i+'.png';
             }
             this.floor1_imageArray.push(newstring);
-        }
+            this.facade_imageArray.push(newstring2);
+        };
+
+        //this.facade_imageArray = [];
+        //var newString2 = '';
+        //for(var i=0;i<120;i++){
+        //    if(i<10){
+        //        newString2='src/dist/images/'+'facade_alone/facadealone_0000'+i+'.png';
+        //    }else if(i>9 && i<100){
+        //        newString2='src/dist/images/'+'facade_alone/facadealone_000'+i+'.png';
+        //    }else{
+        //        newString2='src/dist/images/'+'facade_alone/facadealone_00'+i+'.png';
+        //    }
+        //    this.facade_imageArray.push(newString2);
+        //};
+
+
         //console.log(floor1_imageArray);
 
 
@@ -33,21 +55,21 @@
         var imagesArray = [
             //baseurl+'logo.png',
         ];
-        imagesArray.join(self.floor1_imageArray);
+        imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray);
         //console.log(imagesArray);
         //var floor1_bg = [];
         //append floor 1 image sequece to imageArray
-        for(var x=0;x<120;x++){
-            var newstring = '';
-            if(x<10){
-                newstring=baseurl+'floor_withoutbg/1floorwithoutbg_0000'+x+'.png';
-            }else if(x>9 && x<100){
-                newstring=baseurl+'floor_withoutbg/1floorwithoutbg_000'+x+'.png';
-            }else{
-                newstring=baseurl+'floor_withoutbg/1floorwithoutbg_00'+x+'.png';
-            }
-            imagesArray.push(newstring);
-        }
+        //for(var x=0;x<120;x++){
+        //    var newstring = '';
+        //    if(x<10){
+        //        newstring=baseurl+'floor_withoutbg/1floorwithoutbg_0000'+x+'.png';
+        //    }else if(x>9 && x<100){
+        //        newstring=baseurl+'floor_withoutbg/1floorwithoutbg_000'+x+'.png';
+        //    }else{
+        //        newstring=baseurl+'floor_withoutbg/1floorwithoutbg_00'+x+'.png';
+        //    }
+        //    imagesArray.push(newstring);
+        //}
         var i = 0;
         new preLoader(imagesArray, {
             onProgress: function(){
@@ -76,9 +98,29 @@
         var self = this;
         //go first page
         Common.gotoPin(0);
+        var j=0;
+        var reqAnimateHome = new reqAnimate($('#pin-home .content img'),{
+            fps: 30,
+            totalFrames: 120,
+            //time: 0,
+            processAnimation: function(){
+                var imgName = self.facade_imageArray[j];
+                if(j>118){
+                    j=0;
+                }
+                j++;
+                $('#pin-home .content img').attr('src',imgName);
+            },
+            doneAnimation: function(){
+
+                //show box and letter
+            }
+        });
+        reqAnimateHome.start();
 
     //    click page, go game page
         $('#pin-home').on('touchstart',function(){
+            reqAnimateHome.cancel();
             self.doGame();
         });
     };

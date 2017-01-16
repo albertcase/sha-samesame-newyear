@@ -60,7 +60,7 @@ gulp.task('copygif', function(){
 
 // Concatenate & Minify
 gulp.task("tinypng", function(){
-    gulp.src('./src/assets/image-png/*.{png,jpg,jpeg}')
+    gulp.src(['./src/assets/image-png/*.{png,jpg,jpeg}','./src/assets/image-png/*/*.{png,jpg,jpeg}'])
         .pipe(tinypng({
             key: 'gTeMTlJN2nqY3weeN-cLO83uI6cLaicE',
             sigFile: './src/asserts/image-png/.tinypng-sigs',
