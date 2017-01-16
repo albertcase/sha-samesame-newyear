@@ -344,8 +344,7 @@ html,body{
   .result-content{
     position: absolute;
     left: 50%;
-    top: 50%;
-    margin-top: -2.6rem;
+    top: 3.9rem;
     margin-left: -1.7rem;
     z-index: 3;
     @include size(3.4rem,5.2rem);
@@ -376,9 +375,11 @@ html,body{
       @include keyframes(tbAni){
         0%{
           top: -0.04rem;
+          background: #b7731b;
         }
         100%{
           top: -0.25rem;
+          background: #e1a83b;
         }
       }
     }

@@ -1374,8 +1374,7 @@ html, body {
 #pin-surprise .result-content {
   position: absolute;
   left: 50%;
-  top: 50%;
-  margin-top: -2.6rem;
+  top: 3.9rem;
   margin-left: -1.7rem;
   z-index: 3;
   width: 3.4rem;
@@ -1412,33 +1411,41 @@ html, body {
 @-webkit-keyframes tbAni {
   0% {
     top: -0.04rem;
+    background: #b7731b;
   }
   100% {
     top: -0.25rem;
+    background: #e1a83b;
   }
 }
 @-moz-keyframes tbAni {
   0% {
     top: -0.04rem;
+    background: #b7731b;
   }
   100% {
     top: -0.25rem;
+    background: #e1a83b;
   }
 }
 @-o-keyframes tbAni {
   0% {
     top: -0.04rem;
+    background: #b7731b;
   }
   100% {
     top: -0.25rem;
+    background: #e1a83b;
   }
 }
 @keyframes tbAni {
   0% {
     top: -0.04rem;
+    background: #b7731b;
   }
   100% {
     top: -0.25rem;
+    background: #e1a83b;
   }
 }
 #pin-surprise .result-open {

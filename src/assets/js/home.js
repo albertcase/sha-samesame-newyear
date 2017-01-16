@@ -136,7 +136,6 @@
 
         var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
         var step = 10;
-        console.log(firstLevelPosX);
         $('.role').css('top',floor1PosY);
 
         self.startMove(ele,minPosX,firstLevelPosX,step);
@@ -148,7 +147,7 @@
             {
                 case 0:
                     console.log("floor1: from left to middle");
-                    console.log(self.curStep);
+                    //console.log(self.curStep);
                     $('#floor1 .dialogue').addClass('show');
                     $('#floor1 .dialogue-btn').on('touchstart',function(){
                         if(self.curStep ==1){
@@ -230,25 +229,7 @@
             };
             self.curStep++;
             self.enableMove = false;
-            ////self.forbiddenMove();
-            //if(self.firstStop && !self.secondStop && !self.thirdStop){
-            //    //    first
-            //    console.log('end');
-            //    console.log('dofirstAnimate');
-            //    return;
-            //}else if(!self.firstStop && self.secondStop && !self.thirdStop){
-            //    console.log('end');
-            //    console.log('dofirst2Animate');
-            //    $(ele).css('left',0);
-            //    $('.role').css('bottom','4rem');
-            //    //self.firstStop = false;
-            //    //self.secondStop = true;
-            //}
         });
-
-
-
-
 
 
     };
