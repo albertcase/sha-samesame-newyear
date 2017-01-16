@@ -343,7 +343,8 @@
         //click ask btn, go exchange
         $('.result-ask .btn').on('touchstart', function(){
             $('.result-ask').removeClass('show');
-            $('.result-1').addClass('show');
+            var selectedResult = Math.floor(Math.random()*3);
+            $('.result').eq(selectedResult).addClass('show');
         });
 
         //click go to qrcode part
@@ -363,7 +364,7 @@
         var self = this;
         var j = 0;
         var reqAnimateSurpriseBgAni = new reqAnimate($('#pin-surprise .result-wrap img'),{
-            fps: 6,
+            fps: 5,
             totalFrames: 20,
             //time: 1,
             processAnimation: function(){

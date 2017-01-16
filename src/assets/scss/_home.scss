@@ -422,6 +422,20 @@ html,body{
     }
 
   }
+  .result-2{
+    .r-img{
+      @include size(3.36rem,3.28rem);
+      margin: 0 auto 0.6rem;
+    }
+
+  }
+  .result-3{
+    .r-img{
+      @include size(2.64rem,3.36rem);
+      margin: 0 auto 0.6rem;
+    }
+
+  }
 
   .qrcode{
     display: none;

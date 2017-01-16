@@ -1485,6 +1485,16 @@ html, body {
   height: 3.3rem;
   margin: 0 auto 0.6rem;
 }
+#pin-surprise .result-2 .r-img {
+  width: 3.36rem;
+  height: 3.28rem;
+  margin: 0 auto 0.6rem;
+}
+#pin-surprise .result-3 .r-img {
+  width: 2.64rem;
+  height: 3.36rem;
+  margin: 0 auto 0.6rem;
+}
 #pin-surprise .qrcode {
   display: none;
 }
