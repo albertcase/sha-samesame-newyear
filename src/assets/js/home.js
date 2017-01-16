@@ -69,8 +69,8 @@
                 $('.preload').remove();
                 $('.container').addClass('fade');
                 //self.welcomePage();
-                //self.doGame();
-                self.getSurprise();
+                self.doGame();
+                //self.getSurprise();
 
             }
         });
@@ -137,8 +137,8 @@
         var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
         var step = 10;
         $('.role').css('top',floor1PosY);
-
-        self.startMove(ele,minPosX,firstLevelPosX,step);
+        $(ele).addClass('shorttime').css('left',firstLevelPosX);
+        //self.startMove(ele,minPosX,firstLevelPosX,step);
 
         //self.curStep = 5;
         ele.addEventListener('transitionend',function(){
@@ -148,6 +148,7 @@
                 case 0:
                     console.log("floor1: from left to middle");
                     //console.log(self.curStep);
+                    $(ele).removeClass('shorttime').addClass('longtime');
                     $('#floor1 .dialogue').addClass('show');
                     $('#floor1 .dialogue-btn').on('touchstart',function(){
                         if(self.curStep ==1){

@@ -1123,6 +1123,18 @@ html, body {
   -webkit-transition: all 2s linear;
   transition: all 2s linear;
 }
+#pin-game .pin-content .role .role-progress.longtime {
+  -moz-transition: all 3s linear;
+  -o-transition: all 3s linear;
+  -webkit-transition: all 3s linear;
+  transition: all 3s linear;
+}
+#pin-game .pin-content .role .role-progress.shorttime {
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
+}
 #pin-game .pin-content .role .role-progress.change {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
