@@ -100,7 +100,7 @@ html,body{
     .role{
       position: absolute;
       left: 0;
-      bottom: 0;
+      top: 0;
       z-index: 10;
       @include size(100%,1.3rem);
       overflow: hidden;
@@ -209,6 +209,12 @@ html,body{
     &.screen-3{
       background: url("../images/3floorbg.jpg") no-repeat;
       background-size: 100%;
+      .arrow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
     }
   }
 }
