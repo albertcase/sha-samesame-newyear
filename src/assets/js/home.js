@@ -94,7 +94,7 @@
                 self.welcomePage();
                 //self.doGame();
                 //self.getSurprise();
-
+                self.bindEvent();
             }
         });
 
@@ -110,7 +110,7 @@
         var reqAnimateHome = new reqAnimate($('#pin-home .content img'),{
             fps: 6,
             totalFrames: 20,
-            time: 2,
+            //time: 0,
             processAnimation: function(){
                 var imgName = self.facade_imageArray[j];
                 if(j>self.facade_imageArray.length-2){
@@ -126,20 +126,23 @@
         });
         reqAnimateHome.start();
 
-    //    click page, go game page
-        $('#pin-home').on('touchstart',function(){
-            //reqAnimateHome.cancel();
-            self.enableTrackingAnimated = true;
-            self.doGame();
-        });
 
-        self.bindEvent();
     };
 
     //bind event
     controller.prototype.bindEvent = function(){
 
         var self  = this;
+
+        //for homepage
+        //    click page, go game page
+        $('#pin-home').on('touchstart',function(){
+            //reqAnimateHome.cancel();
+            self.enableTrackingAnimated = true;
+            self.doGame();
+        });
+
+        //for game page
         var container = $('.pin-content');
         var scrren_1 = $('.screen-1'),
             scrren_2 = $('.screen-2'),
@@ -163,7 +166,6 @@
 
             var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
             if(self.enableTrackingAnimated){
-                console.log(self.curStep);
                 switch (self.curStep)
                 {
                     case 0:
@@ -175,7 +177,6 @@
                     case 1:
                         console.log("floor1: from middle to  right");
                         $('.role').css('top',floor2PosY);
-                        console.log(floor2PosY);
                         $(ele).addClass('change');
                         self.curStep++;
                         break;
@@ -269,6 +270,25 @@
                 self.curStep++;
             }
         });
+
+    //    for result page
+        //click ask btn, go exchange
+        $('.result-ask .btn').on('touchstart', function(){
+            $('.result-ask').removeClass('show');
+            var selectedResult = Math.floor(Math.random()*3);
+            $('.result').eq(selectedResult).addClass('show');
+        });
+
+        //click go to qrcode part
+        $('.result .btn-exchange').on('touchstart', function(){
+            $('.result').removeClass('show');
+            $('.qrcode').addClass('show');
+        });
+
+        //qrcode
+        $('.qrcode .btn-exchange').on('touchstart', function(){
+            Common.gotoPin(0);
+        });
     };
 
     //game page
@@ -279,29 +299,15 @@
         self.animateForFloor1();
 
         var container = $('.pin-content');
-        var scrren_1 = $('.screen-1'),
-            scrren_2 = $('.screen-2'),
-            scrren_3 = $('.screen-3');
+        var scrren_1 = $('.screen-1');
 
         var ele = document.getElementById('action-chicken');
         var chickenLength = $(ele).width()*0.6;
-        var minPosX = -$(ele).width(),maxPosX = container.width(),
-            minPosY = 0,maxPosY = container.height() - scrren_1.height();
-        var firstPosX = container.width()/2 - $('.role .role-progress').width()/ 2,
-            firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
+        var firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
 
-        var floor2LevelPosX =$('#floor2').width()*0.4,
-            floor1PosY = scrren_1[0].offsetTop + scrren_1.height() - $('.role').height(),
-            floor2PosY = scrren_2[0].offsetTop + scrren_2.height() - $('.role').height(),
-            floor3PosY = 0;
-
-        var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
-        var step = 10;
-        console.log(floor1PosY);
+        var floor1PosY = scrren_1[0].offsetTop + scrren_1.height() - $('.role').height();
         $('.role').css('top',floor1PosY);
         $(ele).addClass('shorttime').css('left',firstLevelPosX);
-
-
 
     };
     controller.prototype.animateForFloor2Before = function () {
@@ -333,13 +339,14 @@
         var reqAnimateNow = new reqAnimate($('#floor1 .l-bg img'),{
             fps: 6,
             totalFrames: 20,
-            //time: 0,
+            //time: null,
             processAnimation: function(){
                 var imgName = self.floor1_imageArray[j];
                 if(j>self.floor1_imageArray.length-2){
                     j=0;
                 }
                 j++;
+                //console.log('test');
                 $('#floor1 .l-bg img').attr('src',imgName);
             },
             doneAnimation: function(){
@@ -375,41 +382,11 @@
 
     };
 
-    //the element start move
-    controller.prototype.startMove = function(e,startPos,endPos,step){
-        var self = this;
-        var curPos = e.offsetLeft;
-        $(e).css('left',endPos);
-        //var aaa = setTimeout(function(){
-        //    self.forbiddenMove();
-        //},4000);
-
-
-
-    };
-
-    //stop move
-    controller.prototype.stopMove = function(){
-
-    };
-    controller.prototype.forbiddenMove = function(){
-        var self = this;
-        var curPos = $('.role-progress').offsetLeft;
-        alert('第一个挡住');
-        $('.screen-3').on('touchstart',function(){
-            self.startMove($('.role .role-progress'),curPos,$('.container').width(),0);
-        });
-    };
-
-    //change role progress
-    controller.prototype.maskChicken = function(e){
-
-    };
-
     //go surprise page
     controller.prototype.getSurprise = function(){
         var self = this;
         Common.gotoPin(2);
+        self.surpriseBgAni();
         //reset page game
         $('#pin-game .role').removeClass('floor2mask floor3mask');
         $('#pin-game .role-progress').removeClass('longtime changedirection shorttime').css({
@@ -418,25 +395,6 @@
         });
         console.log('yes');
         self.curStep=0;
-
-        self.surpriseBgAni();
-        //click ask btn, go exchange
-        $('.result-ask .btn').on('touchstart', function(){
-            $('.result-ask').removeClass('show');
-            var selectedResult = Math.floor(Math.random()*3);
-            $('.result').eq(selectedResult).addClass('show');
-        });
-
-        //click go to qrcode part
-        $('.result .btn-exchange').on('touchstart', function(){
-            $('.result').removeClass('show');
-            $('.qrcode').addClass('show');
-        });
-
-        //qrcode
-        $('.qrcode .btn-exchange').on('touchstart', function(){
-            Common.gotoPin(0);
-        });
 
     };
 
