@@ -1,6 +1,6 @@
 ;(function(){
     $.ajax({
-        url:'http://2017cnygreeting.samesamechina.com/jssdk?url=http://2017cnygreeting.samesamechina.com',
+        url:'/jssdk?url='+ encodeURIComponent(location.href.split('#')[0]),
         type:'GET',
         data:'json',
         success:function(data){
