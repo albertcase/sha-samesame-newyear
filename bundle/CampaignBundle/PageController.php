@@ -23,7 +23,6 @@ class PageController extends Controller {
 	    );
 		$request->validation($fields);
 		$url = urldecode($request->query->get('url'));
-	  	$this->hostValid($url);
 	  	echo $config = $this->jssdkConfig($url);exit;
 	  	$json = json_encode(array('status' => '1', 'data' => $config));
 	  	echo $json;exit;
