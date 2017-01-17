@@ -12,38 +12,38 @@
                 signature: data.signature,// 必填，签名，见附录1
                 jsApiList: ["onMenuShareAppMessage","onMenuShareTimeline"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
+            wx.ready(function(){
+                //wx.hideOptionMenu({
+                //    menuList: ["menuItem:share:appMessage","menuItem:share:timeline","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:facebook","menuItem:share:QZone","menuItem:copyUrl","menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email"] // 要显示的菜单项，所有menu项见附录3
+                //});
+                wx.onMenuShareAppMessage({
+                    title: '一七送你好时机 wx',
+                    desc: '一七送你好时机',
+                    link: window.location.href,
+                    imgUrl: window.location.origin+'/src/dist/images/share.png',
+                    type: '',
+                    dataUrl: '',
+                    success: function () {
+
+
+                    },
+                    cancel: function () {
+                    }
+                });
+                wx.onMenuShareTimeline({
+                    title: '一七送你好时机 wx',
+                    link: window.location.href,
+                    imgUrl: window.location.origin+'/src/dist/images/share.png',
+                    success: function () {
+
+                    },
+                    cancel: function () {
+
+                    }
+                });
+
+            })
         }
     });
 
-    wx.ready(function(){
-        //wx.hideOptionMenu({
-        //    menuList: ["menuItem:share:appMessage","menuItem:share:timeline","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:facebook","menuItem:share:QZone","menuItem:copyUrl","menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email"] // 要显示的菜单项，所有menu项见附录3
-        //});
-        wx.onMenuShareAppMessage({
-            title: '一七送你好时机 wx',
-            desc: '一七送你好时机',
-            link: window.location.href,
-            imgUrl: window.location.origin+'/src/dist/images/share.png',
-            type: '',
-            dataUrl: '',
-            success: function () {
-
-
-            },
-            cancel: function () {
-            }
-        });
-        wx.onMenuShareTimeline({
-            title: '一七送你好时机 wx',
-            link: window.location.href,
-            imgUrl: window.location.origin+'/src/dist/images/share.png',
-            success: function () {
-
-            },
-            cancel: function () {
-
-            }
-        });
-
-    })
 })();
