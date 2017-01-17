@@ -22,7 +22,7 @@ class PageController extends Controller {
 			'url' => array('notnull', '120'),
 		);
 		$request->validation($fields);
-		$url = $request->request->get('url');
+		$url = $request->query->get('url');
 		$RedisAPI = new \Lib\RedisAPI();
 		$config = $RedisAPI->jssdkConfig($url);
 		$this->dataPrint($config);
