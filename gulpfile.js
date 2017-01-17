@@ -11,14 +11,17 @@ var rename = require('gulp-rename'),
     del = require('del'),
     babel = require("gulp-babel"),
     browserSync = require('browser-sync').create();
+//var imagemin = require('gulp-tinypng');
+//var imageminPngquant = require('imagemin-pngquant');
+var tinypng = require('gulp-tinypng-compress');
 
 //Define the app path
 var path = {
-    all:['*.html','./src/assets/css/*.css','./src/assets/js/*.js','./src/assets/js/lib/*.js'],
+    all:['*.html','./src/assets/css/*.css','./src/dist/css/*.css','./src/assets/js/*.js','./src/assets/js/lib/*.js'],
     template:['./src/*.html'],
     css:['./src/assets/css/*.css'],
     js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/home.js'],
-    images:['./src/assets/images/*'],
+    images:['./src/assets/images/*','./src/dist/images/*'],
 };
 // Browser-sync
 gulp.task('browser-sync', function() {
@@ -49,23 +52,34 @@ gulp.task('css',['clean'],function () {
         .pipe(gulp.dest('./src/dist/css'));
 });
 
+gulp.task('copygif', function(){
+    gulp.src('./src/assets/images/*.gif')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./src/dist/images/'))
+});
+
 // Concatenate & Minify
-//gulp.task('scripts_welcome',['clean'], function() {
-//    return gulp.src(path.welcomejs)
-//        .pipe(concat('welcome_all.js'))
-//        .pipe(gulp.dest('./src/dist'))
-//        .pipe(rename('welcome_all.min.js'))
-//        .pipe(uglify())
-//        .pipe(gulp.dest('./src/dist/js'));
-//});
+gulp.task("tinypng", function(){
+    gulp.src(['./src/assets/image-png/*.{png,jpg,jpeg}','./src/assets/image-png/*/*.{png,jpg,jpeg}'])
+        .pipe(tinypng({
+            key: 'gTeMTlJN2nqY3weeN-cLO83uI6cLaicE',
+            sigFile: './src/asserts/image-png/.tinypng-sigs',
+            log: true
+        })).on('error', function(err) {
+            console.error(err.message);
+        })
+        .pipe(gulp.dest('./src/dist/images/'));
+});
 
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
+    //gulp.watch(path.images,['copygif']),
+    //gulp.watch(path.images,['tinypng']),
     gulp.watch(path.all,['css']);
 });
 
 // Default Task
-gulp.task('default', ['watch','css','browser-sync']);
+gulp.task('default', ['watch','browser-sync']);
 
 

@@ -981,6 +981,21 @@ img {
   color: #fff;
 }
 
+.preload {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #e61c58;
+  color: #fff;
+  z-index: 100;
+}
+
+.show {
+  display: block !important;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -1054,8 +1069,28 @@ html, body {
   transform: translate(-50%, -50%);
 }
 
+#pin-home .bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#pin-home .bg img {
+  height: 100%;
+}
 #pin-home .title {
-  background: url("../../images/p1-t1.png") no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7.5rem;
+  height: 12.04rem;
+  z-index: 2;
+}
+#pin-home .content {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
 }
 
 #pin-game {
@@ -1066,26 +1101,39 @@ html, body {
 #pin-game .pin-content .role {
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
   z-index: 10;
   width: 100%;
   height: 1.3rem;
   overflow: hidden;
   -webkit-mask-size: 100% 100%;
   -webkit-mask-position: 0% 0;
-  -webkit-mask-image: url("../../images/mask.png");
+  -webkit-mask-image: url("../images/mask.png");
   -webkit-mask-repeat: no-repeat;
 }
 #pin-game .pin-content .role .role-progress {
   position: absolute;
   left: 0;
+  bottom: 0;
   width: 3.66rem;
-  height: 100%;
+  height: 1.3rem;
   overflow: hidden;
   -moz-transition: all 2s linear;
   -o-transition: all 2s linear;
   -webkit-transition: all 2s linear;
   transition: all 2s linear;
+}
+#pin-game .pin-content .role .role-progress.longtime {
+  -moz-transition: all 3s linear;
+  -o-transition: all 3s linear;
+  -webkit-transition: all 3s linear;
+  transition: all 3s linear;
+}
+#pin-game .pin-content .role .role-progress.shorttime {
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
 }
 #pin-game .pin-content .role .role-progress.change {
   -webkit-transform: rotateY(180deg);
@@ -1093,6 +1141,13 @@ html, body {
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+}
+#pin-game .pin-content .role .role-progress.changedirection {
+  -webkit-transform: rotateY(30deg) skewY(-10deg);
+  -moz-transform: rotateY(30deg) skewY(-10deg);
+  -ms-transform: rotateY(30deg) skewY(-10deg);
+  -o-transform: rotateY(30deg) skewY(-10deg);
+  transform: rotateY(30deg) skewY(-10deg);
 }
 #pin-game .pin-content .role .role-progress img {
   width: auto;
@@ -1105,12 +1160,19 @@ html, body {
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
+#pin-game .pin-content .role.floor2mask {
+  -webkit-mask-image: url("../images/mask-floor2.png");
+}
+#pin-game .pin-content .role.floor3mask {
+  height: 3.7rem;
+  -webkit-mask-image: url("../images/mask-floor3.png");
+}
 #pin-game .screen {
   position: relative;
   border: #582b0b 1px solid;
   margin-bottom: 0.15rem;
-  width: 6.97rem;
-  height: 3.64rem;
+  width: 7.03rem;
+  height: 3.7rem;
   text-align: center;
 }
 #pin-game .screen .l-bg {
@@ -1123,7 +1185,7 @@ html, body {
   bottom: 0.05rem;
   width: 1.36rem;
   height: 4.83rem;
-  background: url("../../images/pipe.png") no-repeat;
+  background: url("../images/pipe.png") no-repeat;
   background-size: 100%;
 }
 #pin-game .screen .pipe-bg {
@@ -1133,10 +1195,326 @@ html, body {
   z-index: 11;
   background-position: 0 100%;
 }
-#pin-game .screen.screen-3 {
+#pin-game .screen .level {
+  position: absolute;
+  bottom: 0;
+  width: 1.31rem;
+  height: 2.9rem;
+  left: 3.2rem;
+  z-index: 3;
+}
+#pin-game .screen .level.after {
+  left: 2.4rem;
+  width: 2.98rem;
+  height: 4.8rem;
+}
+#pin-game .screen.screen-1 {
   margin-bottom: 0;
+  background: url("../images/1floorbg.jpg") no-repeat;
+  background-size: 100%;
+}
+#pin-game .screen.screen-2 {
+  background: url("../images/2floorbg.jpg") no-repeat;
+  background-size: 100%;
 }
 #pin-game .screen.screen-2 .pipe {
   left: -0.18rem;
   transform: rotateZ(180deg);
+}
+#pin-game .screen.screen-3 {
+  background: url("../images/3floorbg.jpg") no-repeat;
+  background-size: 100%;
+}
+#pin-game .screen.screen-3 .arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.dialogue {
+  display: none;
+  width: 6rem;
+  height: 4rem;
+  position: absolute;
+  z-index: 11;
+}
+#floor1 .dialogue {
+  left: 1.5rem;
+  bottom: 1.2rem;
+}
+#floor2 .dialogue {
+  left: 0.25rem;
+  bottom: 1.2rem;
+}
+#floor3 .dialogue {
+  left: 0.6rem;
+  bottom: -3.3rem;
+}
+.dialogue.show {
+  display: block;
+}
+.dialogue .dialogue-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6rem;
+  height: 4rem;
+  z-index: 1;
+}
+.dialogue .dialogue-tips {
+  position: relative;
+  left: 2.4rem;
+  top: 0.6rem;
+  z-index: 2;
+  width: 4.04rem;
+  height: 1.95rem;
+  background-image: url("../images/dialogue-content-text.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+#floor1 .dialogue .dialogue-tips {
+  background-position: 0 0;
+}
+#floor2 .dialogue .dialogue-tips {
+  background-position: 0 45%;
+}
+#floor3 .dialogue .dialogue-tips {
+  background-position: 0 100%;
+  left: 1.5rem;
+  top: 1.2rem;
+}
+.dialogue .dialogue-btn {
+  position: relative;
+  left: 3rem;
+  margin-top: 0.7rem;
+  z-index: 2;
+  background: #cd1350;
+  width: 2.4rem;
+  height: 0.75rem;
+  border-radius: 20px;
+  border: #5c2c14 2px solid;
+  box-sizing: border-box;
+}
+.dialogue .dialogue-btn span {
+  display: block;
+  position: absolute;
+  bottom: 0.05rem;
+  left: -0.04rem;
+  width: 2.4rem;
+  height: 0.75rem;
+  border-radius: 20px;
+  border: #5c2c14 2px solid;
+  box-sizing: border-box;
+  background-color: #f4407b;
+  background-image: url("../images/dialogue-btn-text.png");
+  background-repeat: no-repeat;
+  background-size: auto 300%;
+  background-position: 0.35rem -10%;
+  -webkit-animation: btnAni 1s steps(2) infinite;
+  -moz-animation: btnAni 1s steps(2) infinite;
+  animation: btnAni 1s steps(2) infinite;
+}
+#floor1 .dialogue .dialogue-btn span {
+  background-position: 0.6rem 83%;
+}
+#floor2 .dialogue .dialogue-btn span {
+  background-position: 0.6rem -10%;
+}
+#floor3 .dialogue .dialogue-btn span {
+  background-position: 0.28rem 33%;
+}
+@-webkit-keyframes btnAni {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4407b;
+    bottom: 0.1rem;
+  }
+}
+@-moz-keyframes btnAni {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4407b;
+    bottom: 0.1rem;
+  }
+}
+@-o-keyframes btnAni {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4407b;
+    bottom: 0.1rem;
+  }
+}
+@keyframes btnAni {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4407b;
+    bottom: 0.1rem;
+  }
+}
+#floor1 .dialogue {
+  left: 1.2rem;
+  bottom: 2.3rem;
+}
+
+#pin-surprise .result-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+#pin-surprise .result-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 7.5rem;
+  height: 12.04rem;
+  z-index: 2;
+}
+#pin-surprise .result-content {
+  position: absolute;
+  left: 50%;
+  top: 3.9rem;
+  margin-left: -1.7rem;
+  z-index: 3;
+  width: 3.4rem;
+  height: 5.2rem;
+}
+#pin-surprise .result {
+  display: none;
+}
+#pin-surprise .result.show {
+  display: block;
+}
+#pin-surprise .btn {
+  position: relative;
+  background: #b7731b;
+  border: #5c2c14 2px solid;
+}
+#pin-surprise .btn span {
+  padding: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -0.04rem;
+  top: -0.04rem;
+  background: #e1a83b;
+  border: #5c2c14 2px solid;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+  -webkit-animation: tbAni 1s steps(2) infinite;
+  -moz-animation: tbAni 1s steps(2) infinite;
+  animation: tbAni 1s steps(2) infinite;
+}
+@-webkit-keyframes tbAni {
+  0% {
+    top: -0.04rem;
+    background: #b7731b;
+  }
+  100% {
+    top: -0.25rem;
+    background: #e1a83b;
+  }
+}
+@-moz-keyframes tbAni {
+  0% {
+    top: -0.04rem;
+    background: #b7731b;
+  }
+  100% {
+    top: -0.25rem;
+    background: #e1a83b;
+  }
+}
+@-o-keyframes tbAni {
+  0% {
+    top: -0.04rem;
+    background: #b7731b;
+  }
+  100% {
+    top: -0.25rem;
+    background: #e1a83b;
+  }
+}
+@keyframes tbAni {
+  0% {
+    top: -0.04rem;
+    background: #b7731b;
+  }
+  100% {
+    top: -0.25rem;
+    background: #e1a83b;
+  }
+}
+#pin-surprise .result-open {
+  display: none;
+}
+#pin-surprise .result-open .ot {
+  width: 1.72rem;
+  height: 1rem;
+  margin: 0 auto;
+}
+#pin-surprise .result-open .btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  margin: 0.55rem auto;
+}
+#pin-surprise .result-open .btn span {
+  border-radius: 100%;
+  line-height: 1.5rem;
+  top: -0.25rem;
+}
+#pin-surprise .btn-exchange {
+  width: 2.7rem;
+  height: 0.8rem;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+#pin-surprise .btn-exchange span {
+  width: 2.7rem;
+  height: 0.8rem;
+  border-radius: 20px;
+  line-height: 0.8rem;
+  font-size: 0.36rem;
+}
+#pin-surprise .result-1 .r-img {
+  width: 2.75rem;
+  height: 3.3rem;
+  margin: 0 auto 0.6rem;
+}
+#pin-surprise .result-2 .r-img {
+  width: 3.36rem;
+  height: 3.28rem;
+  margin: 0 auto 0.6rem;
+}
+#pin-surprise .result-3 .r-img {
+  width: 2.64rem;
+  height: 3.36rem;
+  margin: 0 auto 0.6rem;
+}
+#pin-surprise .qrcode {
+  display: none;
+}
+#pin-surprise .qrcode .r-img {
+  width: 2.14rem;
+  height: 3.96rem;
+  margin: 0.6rem auto;
+}
+#pin-surprise .qrcode .btn-exchange {
+  margin-top: 2.1rem;
 }

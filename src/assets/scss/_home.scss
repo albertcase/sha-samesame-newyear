@@ -67,8 +67,27 @@ html,body{
 
 //for home page
 #pin-home{
+  .bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    img{
+      height: 100%;
+    }
+  }
   .title{
-    background: url('../../images/p1-t1.png') no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include size(7.5rem,12.04rem);
+    z-index: 2;
+  }
+  .content{
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
   }
 }
 
@@ -81,26 +100,33 @@ html,body{
     .role{
       position: absolute;
       left: 0;
-      bottom: 0;
+      top: 0;
       z-index: 10;
       @include size(100%,1.3rem);
       overflow: hidden;
-      //@include transition(left 4s linear);
       -webkit-mask-size: 100% 100%;
-      //-webkit-mask-position: 0% 0; //hide chicken
       -webkit-mask-position: 0% 0; //show
-      -webkit-mask-image: url('../../images/mask.png');
+      -webkit-mask-image: url('../images/mask.png');
       -webkit-mask-repeat: no-repeat;
-
+      //background: rgba(255,0,0,0.5);
       .role-progress{
         position: absolute;
         left: 0;
-        @include size(3.66rem,100%);
-        //@include size(100%,1.6rem);
+        bottom: 0;
+        @include size(3.66rem,1.3rem);
         overflow: hidden;
         @include transition(all 2s linear);
+        &.longtime{
+          @include transition(all 3s linear);
+        }
+        &.shorttime{
+          @include transition(all 1s linear);
+        }
         &.change{
           @include transform(rotateY(180deg));
+        }
+        &.changedirection{
+          @include transform(rotateY(30deg) skewY(-10deg));
         }
         img{
           width: auto;
@@ -110,23 +136,21 @@ html,body{
       &.go-left{
         @include transform(rotateY(180deg));
       }
-      //.light-mask{
-      //  width: 100px;
-      //  height: 100px;
-      //  background: url('../../images/p1-t1.png') no-repeat;
-      //  background-size: 100%;
-      //  -webkit-mask-size: 100%;
-      //  -webkit-mask-position: 0% 0%;
-      //  -webkit-mask-image: url('../../images/p1-t1.png');
-      //}
+      &.floor2mask{
+        -webkit-mask-image: url('../images/mask-floor2.png');
+      }
+      &.floor3mask{
+        height: 3.7rem;
+        -webkit-mask-image: url('../images/mask-floor3.png');
+      }
     }
   }
   .screen{
     position: relative;
     border: #582b0b 1px solid;
     margin-bottom: 0.15rem;
-    width: 6.97rem;
-    height: 3.64rem;
+    width: 7.03rem;
+    height: 3.7rem;
     text-align: center;
     .l-bg{
       position: relative;
@@ -137,7 +161,7 @@ html,body{
       right: -0.18rem;
       bottom: 0.05rem;
       @include size(1.36rem,4.83rem);
-      background: url('../../images/pipe.png') no-repeat;
+      background: url('../images/pipe.png') no-repeat;
       background-size: 100%;
     }
     .pipe-bg{
@@ -148,15 +172,272 @@ html,body{
       z-index: 11;
       background-position: 0 100%;
     }
+    .level{
+      position: absolute;
+      bottom: 0;
+      width: 1.31rem;
+      height: 2.9rem;
+      left: 3.2rem;
+      z-index: 3;
+      &.after{
+        left: 2.4rem;
+        width: 2.98rem;
+        height: 4.8rem;
+      }
+    }
 
     &.screen-1{
       margin-bottom: 0;
+      background: url("../images/1floorbg.jpg") no-repeat;
+      background-size: 100%;
     }
     &.screen-2{
+      background: url("../images/2floorbg.jpg") no-repeat;
+      background-size: 100%;
       .pipe{
         left: -0.18rem;
         transform: rotateZ(180deg);
       }
+    }
+    &.screen-3{
+      background: url("../images/3floorbg.jpg") no-repeat;
+      background-size: 100%;
+      .arrow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
+    }
+  }
+}
+
+
+//for dialogue
+.dialogue{
+  display: none;
+  @include size(6rem,4rem);
+  position: absolute;
+  z-index: 11;
+  #floor1 &{
+    left: 1.5rem;
+    bottom: 1.2rem;
+  }
+  #floor2 &{
+    left: 0.25rem;
+    bottom: 1.2rem;
+  }
+  #floor3 &{
+    left: 0.6rem;
+    bottom: -3.3rem;
+  }
+  &.show{
+    display: block;
+  }
+  .dialogue-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include size(6rem,4rem);
+    z-index: 1;
+  }
+  .dialogue-tips{
+    position: relative;
+    left: 2.4rem;
+    top: 0.6rem;
+    z-index: 2;
+    @include size(4.04rem,1.95rem);
+    background-image: url('../images/dialogue-content-text.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    #floor1 &{
+      background-position: 0 0;
+    }
+    #floor2 &{
+      background-position: 0 45%;
+    }
+    #floor3 &{
+      background-position: 0 100%;
+      left: 1.5rem;
+      top: 1.2rem;
+    }
+  }
+  .dialogue-btn{
+    position: relative;
+    left: 3rem;
+    margin-top: 0.7rem;
+    z-index: 2;
+    background: #cd1350;
+    @include size(2.4rem,0.75rem);
+    border-radius:20px;
+    border: #5c2c14 2px solid;
+    box-sizing: border-box;
+    span{
+      display: block;
+      position: absolute;
+      bottom: 0.05rem;
+      left: -0.04rem;
+      @include size(2.4rem,0.75rem);
+      border-radius:20px;
+      border: #5c2c14 2px solid;
+      box-sizing: border-box;
+      background-color: #f4407b;
+      background-image: url('../images/dialogue-btn-text.png');
+      background-repeat: no-repeat;
+      background-size: auto 300%;
+      background-position: 0.35rem -10%;
+      @include animation(btnAni 1s steps(2) infinite);
+      #floor1 &{
+        background-position: 0.6rem 83%;
+      }
+      #floor2 &{
+        background-position: 0.6rem -10%;
+      }
+      #floor3 &{
+        background-position: 0.28rem 33%;
+      }
+    }
+    @include keyframes(btnAni){
+      0%{
+        background-color: #cd1350;
+        bottom: -0.04rem;
+      }
+      100%{
+        background-color: #f4407b;
+        bottom: 0.1rem;
+      }
+    }
+  }
+  #floor1 &{
+    left: 1.2rem;
+    bottom: 2.3rem;
+  }
+}
+
+//floor1
+#floor1{
+
+}
+
+//for pin3
+#pin-surprise{
+  .result-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+  .result-wrap{
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include size(7.5rem,12.04rem);
+    z-index: 2;
+  }
+  .result-content{
+    position: absolute;
+    left: 50%;
+    top: 3.9rem;
+    margin-left: -1.7rem;
+    z-index: 3;
+    @include size(3.4rem,5.2rem);
+  }
+  .result{
+    display: none;
+    &.show{
+      display: block;
+    }
+  }
+  .btn{
+    position: relative;
+    background: #b7731b;
+    border: #5c2c14 2px solid;
+    span{
+      padding: 0;
+      display: block;
+      position: absolute;
+      @include size(100%,100%);
+      left: -0.04rem;
+      top: -0.04rem;
+      background: #e1a83b;
+      border: #5c2c14 2px solid;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: bold;
+      @include animation(tbAni 1s steps(2) infinite);
+      @include keyframes(tbAni){
+        0%{
+          top: -0.04rem;
+          background: #b7731b;
+        }
+        100%{
+          top: -0.25rem;
+          background: #e1a83b;
+        }
+      }
+    }
+  }
+  .result-open{
+    display: none;
+    .ot{
+      @include size(1.72rem,1rem);
+      margin: 0 auto;
+    }
+    .btn{
+      @include size(1.5rem,1.5rem);
+      border-radius: 100%;
+      margin: 0.55rem auto;
+      span{
+        //@include size(1.5rem,1.5rem);
+        border-radius: 100%;
+        line-height: 1.5rem;
+        top: -0.25rem;
+      }
+    }
+  }
+//  result
+  .btn-exchange{
+    @include size(2.7rem,0.8rem);
+    border-radius: 20px;
+    margin: 0 auto;
+    span{
+      @include size(2.7rem,0.8rem);
+      border-radius: 20px;
+      line-height: 0.8rem;
+      font-size: 0.36rem;
+    }
+  }
+//  result1
+  .result-1{
+    .r-img{
+      @include size(2.75rem,3.3rem);
+      margin: 0 auto 0.6rem;
+    }
+
+  }
+  .result-2{
+    .r-img{
+      @include size(3.36rem,3.28rem);
+      margin: 0 auto 0.6rem;
+    }
+
+  }
+  .result-3{
+    .r-img{
+      @include size(2.64rem,3.36rem);
+      margin: 0 auto 0.6rem;
+    }
+
+  }
+
+  .qrcode{
+    display: none;
+    .r-img{
+      @include size(2.14rem,3.96rem);
+      margin: 0.6rem auto;
+    }
+    .btn-exchange{
+      margin-top: 2.1rem;
     }
   }
 }

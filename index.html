@@ -12,6 +12,7 @@
     <script src="/src/assets/js/rem.js"></script>
     <script src="/src/assets/js/lib/zepto.min.js"></script>
     <script src="/src/assets/js/lib/pre-loader.js"></script>
+    <script src="/src/assets/js/lib/reqAnimate.js"></script>
     <script src="/src/assets/js/common.js"></script>
     <script src="/src/assets/js/api.js"></script>
     <!--<script src="/src/assets/js/wxshare.js"></script>-->
@@ -24,12 +25,24 @@
         <div class="mod-orient-layer__desc">请在解锁模式下使用竖屏浏览</div>
     </div>
 </div>
+<div class="preload">
+    <div class="v-content"></div>
+</div>
 <div class="wrapper">
     <!-- welcome page,show theme-->
     <div class="pin pin-1" id="pin-home">
         <!--<h2 class="title">一七送你好时机</h2>-->
-        <div class="p1-t2">
-            <img src="/src/images/0facade.gif" alt=""/>
+        <!--<div class="p1-t2">-->
+            <!--<img src="/src/dist/images/0facade.gif" alt=""/>-->
+        <!--</div>-->
+        <div class="bg">
+            <img src="/src/dist/images/0facade_bg.gif" alt=""/>
+        </div>
+        <div class="title">
+            <img src="/src/dist/images/0facade_title.gif" alt=""/>
+        </div>
+        <div class="content">
+            <img src="/src/dist/images/facade_alone/facadealone_00000.png" alt=""/>
         </div>
     </div>
     <!-- game content-->
@@ -38,37 +51,126 @@
             <!-- use mask-->
             <div class="role">
                 <div class="role-progress" id="action-chicken">
-                    <!--<div class="light-mask"></div>-->
-                    <img src="/src/images/chickens.gif" alt=""/>
+                    <img src="/src/dist/images/chickens.gif" alt=""/>
                 </div>
             </div>
             <div class="screen screen-3" id="floor3">
                 <div class="l-bg">
-                    <img src="/src/images/floor-3.jpg" alt=""/>
+                    <img src="/src/dist/images/3eventbefore.gif" alt=""/>
+                </div>
+                <div class="arrow">
+                    <img src="/src/dist/images/3afterarrow/3afterarrow_00000.png" alt=""/>
+                </div>
+                <!-- dialogue-->
+                <div class="dialogue">
+                    <div class="dialogue-bg">
+                        <img src="/src/dist/images/dialoguebg1.gif" alt=""/>
+                    </div>
+                    <div class="dialogue-tips"></div>
+                    <div class="dialogue-btn">
+                        <span></span>
+                    </div>
                 </div>
             </div>
             <div class="screen screen-2" id="floor2">
                 <div class="l-bg">
-                    <img src="/src/images/floor2.jpg" alt=""/>
+                    <img src="/src/dist/images/2before/2before_00024.png" alt=""/>
                 </div>
                 <!-- pipe-->
                 <div class="pipe pipe-bg"></div>
-                <div class="pipe pipe-cover"></div>
+                <!--<div class="pipe pipe-cover"></div>-->
+                <!-- dialogue-->
+                <div class="dialogue">
+                    <div class="dialogue-bg">
+                        <img src="/src/dist/images/dialoguebg2.gif" alt=""/>
+                    </div>
+                    <div class="dialogue-tips"></div>
+                    <div class="dialogue-btn">
+                        <span></span>
+                    </div>
+                </div>
             </div>
             <div class="screen screen-1" id="floor1">
                 <div class="l-bg">
-                    <img src="/src/images/floor1.jpg" alt=""/>
+                    <img src="/src/dist/images/1floorbg.jpg" alt=""/>
+                </div>
+                <!-- 障碍物-->
+                <div class="level">
+                    <img src="/src/dist/images/1eventbefore2.gif"  loop=1 alt=""/>
                 </div>
                 <!-- pipe-->
                 <div class="pipe pipe-bg"></div>
-                <div class="pipe pipe-cover"></div>
+                <!--<div class="pipe pipe-cover"></div>-->
+                <!-- dialogue-->
+                <div class="dialogue">
+                    <div class="dialogue-bg">
+                        <img src="/src/dist/images/dialoguebg2.gif" alt=""/>
+                    </div>
+                    <div class="dialogue-tips"></div>
+                    <div class="dialogue-btn">
+                        <span></span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
     <!-- see the surprize-->
     <div class="pin pin-3" id="pin-surprise">
-        送你一次
-        免费比稿
+        <div class="result-wrap">
+            <img src="/src/dist/images/endingpage_frame2/endingpage_00000.jpg" alt=""/>
+        </div>
+        <div class="result-content">
+            <div class="result-ask result-open v-content show">
+                <div class="ot">
+                    <img src="/src/dist/images/p3-t1.png" alt=""/>
+                </div>
+                <div class="btn btn-circle">
+                    <span>开</span>
+                </div>
+            </div>
+
+            <!-- result-->
+            <!--获得完美方案-->
+            <div class="result result-1">
+                <div class="r-img">
+                    <img src="/src/dist/images/result1.png" alt=""/>
+                </div>
+                <div class="btn btn-exchange">
+                    <span>立刻兑换</span>
+                </div>
+            </div>
+
+            <!-- 83年的雪碧已为您备下---新天地众异厅-->
+            <div class="result result-2">
+                <div class="r-img">
+                    <img src="/src/dist/images/result2.png" alt=""/>
+                </div>
+                <div class="btn btn-exchange">
+                    <span>立刻兑换</span>
+                </div>
+            </div>
+            <!-- 老板要不我们见面吧-->
+            <div class="result result-3">
+                <div class="r-img">
+                    <img src="/src/dist/images/result3.png" alt=""/>
+                </div>
+                <div class="btn btn-exchange">
+                    <span>立刻兑换</span>
+                </div>
+            </div>
+
+            <!-- qrcode-->
+            <div class="qrcode">
+                <div class="r-img">
+                    <img src="/src/dist/images/qr-code.png" alt=""/>
+                </div>
+                <div class="btn btn-exchange">
+                    <span>再玩一次</span>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
