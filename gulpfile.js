@@ -91,6 +91,6 @@ gulp.task('watch', ['clean'],function() {
 });
 
 // Default Task
-gulp.task('default', ['watch','browser-sync']);
+gulp.task('default', ['watch','scripts','browser-sync']);
 
 

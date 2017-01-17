@@ -5,6 +5,7 @@
         this.firstStop = true;
         this.secondStop = false;
         this.thirdStop = false;
+        this.enableTrackingAnimated = false;
         /*each transition end set to ++*/
         /*we have 8 transition end for chicken element*/
         this.curStep = 0;
@@ -48,8 +49,6 @@
     //init
     controller.prototype.init = function(){
         var self = this;
-        //self.welcomePage();
-        //self.doGame();
         var baseurl = 'src/dist/images/';
         var imagesArray = [
             baseurl+'3eventbefore.png',
@@ -129,8 +128,146 @@
 
     //    click page, go game page
         $('#pin-home').on('touchstart',function(){
-            reqAnimateHome.cancel();
+            //reqAnimateHome.cancel();
+            self.enableTrackingAnimated = true;
             self.doGame();
+        });
+
+        self.bindEvent();
+    };
+
+    //bind event
+    controller.prototype.bindEvent = function(){
+
+        var self  = this;
+        var container = $('.pin-content');
+        var scrren_1 = $('.screen-1'),
+            scrren_2 = $('.screen-2'),
+            scrren_3 = $('.screen-3');
+
+        var ele = document.getElementById('action-chicken');
+        //var step = 10;
+        //$('.role').css('top',floor1PosY);
+        ele.addEventListener('transitionend',function(){
+            var maxPosX = container.width();
+            var chickenLength = $(ele).width()*0.6;
+            var minPosX = -$(ele).width(),
+                minPosY = 0,maxPosY = container.height() - scrren_1.height();
+            var firstPosX = container.width()/2 - $('.role .role-progress').width()/ 2,
+                firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
+
+            var floor2LevelPosX =$('#floor2').width()*0.4,
+                floor1PosY = scrren_1[0].offsetTop + scrren_1.height() - $('.role').height(),
+                floor2PosY = scrren_2[0].offsetTop + scrren_2.height() - $('.role').height(),
+                floor3PosY = 0;
+
+            var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
+            if(self.enableTrackingAnimated){
+                console.log(self.curStep);
+                switch (self.curStep)
+                {
+                    case 0:
+                        console.log("floor1: from left to middle");
+                        //console.log(self.curStep);
+                        $(ele).removeClass('shorttime').addClass('longtime');
+                        $('#floor1 .dialogue').addClass('show');
+                        break;
+                    case 1:
+                        console.log("floor1: from middle to  right");
+                        $('.role').css('top',floor2PosY);
+                        console.log(floor2PosY);
+                        $(ele).addClass('change');
+                        self.curStep++;
+                        break;
+                    case 2:
+                        console.log("floor1-2: from floor1 right to floor2 right");
+                        $(ele).css('left',floor2LevelPosX);
+                        $('.role').addClass('floor2mask');
+                        self.curStep++;
+                        break;
+                    case 3:
+                        console.log("floor2: from right to middle");
+                        $('#floor2 .dialogue').addClass('show');
+
+                        break;
+                    case 4:
+                        console.log("floor2: from middle to left");
+                        $('.role').css('top',floor3PosY);
+                        $(ele).removeClass('change');
+                        self.curStep++;
+                        break;
+                    case 5:
+                        console.log("floor2-3: from floor2 left to floor3 left");
+                        $('.role').css('top',floor3PosY).addClass('floor3mask');
+                        $(ele).css('left',firstLevelPosX);
+                        self.curStep++;
+                        break;
+                    case 6:
+                        console.log("floor3: from floor3 left to middle");
+                        $('#floor3 .dialogue').addClass('show');
+
+                        break;
+                    case 7:
+                        console.log("floor3: from floor3 middle to right");
+                        //transform the element
+                        self.animateForFloor3();
+                        //$(ele).css({
+                        //    left:firstLevelPosX+250,
+                        //    bottom:0,
+                        //});
+                        $(ele).css('left',floor3PosXEnd);
+                        self.curStep++;
+                        break;
+                    case 8:
+                        console.log("floor3: from floor3 right to out");
+                        $(ele).addClass('changedirection').css({
+                            left:floor3PosXEnd+$(ele).width(),
+                            bottom:$(ele).height(),
+                        });
+                        self.curStep++;
+                        break;
+                    case 9:
+                        console.log("floor3: from floor3 out to hide");
+                        self.enableTrackingAnimated = false;
+                        self.getSurprise();
+                        break;
+                };
+                //self.enableMove = false;
+            }
+
+        });
+
+        $('#floor1 .dialogue-btn').on('touchstart',function(){
+            var maxPosX = container.width();
+            if(self.curStep==0){
+                $('#floor1 .dialogue').removeClass('show');
+                //after animation
+                $('#floor1 .level').addClass('after');
+                $('#floor1 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                $(ele).css('left',maxPosX);
+                self.curStep++;
+            }
+        });
+        $('#floor2 .dialogue-btn').on('touchstart',function(){
+            var minPosX = -$(ele).width();
+            if(self.curStep ==3){
+                $('#floor2 .dialogue').removeClass('show');
+                //after animation
+                $('#floor2 .level').addClass('fadein');
+                //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                $(ele).css('left',minPosX);
+                self.curStep++;
+            }
+        });
+        $('#floor3 .dialogue-btn').on('touchstart',function(){
+            var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
+            if(self.curStep ==6){
+                $('#floor3 .dialogue').removeClass('show');
+                //after animation
+                $('#floor3 .level').addClass('fadein');
+                $(ele).css('left',floor3PosXEnd-20);
+                self.curStep++;
+            }
         });
     };
 
@@ -160,100 +297,10 @@
 
         var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
         var step = 10;
+        console.log(floor1PosY);
         $('.role').css('top',floor1PosY);
         $(ele).addClass('shorttime').css('left',firstLevelPosX);
-        //self.startMove(ele,minPosX,firstLevelPosX,step);
 
-        //self.curStep = 5;
-        ele.addEventListener('transitionend',function(){
-
-            switch (self.curStep)
-            {
-                case 0:
-                    console.log("floor1: from left to middle");
-                    //console.log(self.curStep);
-                    $(ele).removeClass('shorttime').addClass('longtime');
-                    $('#floor1 .dialogue').addClass('show');
-                    $('#floor1 .dialogue-btn').on('touchstart',function(){
-                        if(self.curStep ==1){
-                            $('#floor1 .dialogue').removeClass('show');
-                            //after animation
-                            $('#floor1 .level').addClass('after');
-                            $('#floor1 .level img').attr('src','/src/dist/images/1eventafter2.gif');
-                            $(ele).css('left',maxPosX);
-                        }
-                    });
-                    break;
-                case 1:
-                    console.log("floor1: from middle to  right");
-                    $('.role').css('top',floor2PosY);
-                    $(ele).addClass('change');
-                    break;
-                case 2:
-                    console.log("floor1-2: from floor1 right to floor2 right");
-                    $(ele).css('left',floor2LevelPosX);
-                    $('.role').addClass('floor2mask');
-                    break;
-                case 3:
-                    console.log("floor2: from right to middle");
-                    $('#floor2 .dialogue').addClass('show');
-                    $('#floor2 .dialogue-btn').on('touchstart',function(){
-                        if(self.curStep ==4){
-                            $('#floor2 .dialogue').removeClass('show');
-                            //after animation
-                            $('#floor2 .level').addClass('fadein');
-                            //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
-                            $(ele).css('left',minPosX);
-                        }
-                    });
-                    break;
-                case 4:
-                    console.log("floor2: from middle to left");
-                    $('.role').css('top',floor3PosY);
-                    $(ele).removeClass('change');
-                    break;
-                case 5:
-                    console.log("floor2-3: from floor2 left to floor3 left");
-                    $('.role').css('top',floor3PosY).addClass('floor3mask');
-                    $(ele).css('left',firstLevelPosX);
-                    break;
-                case 6:
-                    console.log("floor3: from floor3 left to middle");
-                    $('#floor3 .dialogue').addClass('show');
-                    $('#floor3 .dialogue-btn').on('touchstart',function(){
-                        if(self.curStep ==7){
-                            $('#floor3 .dialogue').removeClass('show');
-                            //after animation
-                            $('#floor3 .level').addClass('fadein');
-                            $(ele).css('left',floor3PosXEnd-20);
-                        }
-                    });
-                    break;
-                case 7:
-                    console.log("floor3: from floor3 middle to right");
-                    //transform the element
-                    self.animateForFloor3();
-                    //$(ele).css({
-                    //    left:firstLevelPosX+250,
-                    //    bottom:0,
-                    //});
-                    $(ele).css('left',floor3PosXEnd);
-                    break;
-                case 8:
-                    console.log("floor3: from floor3 right to out");
-                    $(ele).addClass('changedirection').css({
-                        left:floor3PosXEnd+$(ele).width(),
-                        bottom:$(ele).height(),
-                    });
-                    break;
-                case 9:
-                    console.log("floor3: from floor3 out to hide");
-                    self.getSurprise();
-                    break;
-            };
-            self.curStep++;
-            self.enableMove = false;
-        });
 
 
     };
@@ -363,6 +410,15 @@
     controller.prototype.getSurprise = function(){
         var self = this;
         Common.gotoPin(2);
+        //reset page game
+        $('#pin-game .role').removeClass('floor2mask floor3mask');
+        $('#pin-game .role-progress').removeClass('longtime changedirection shorttime').css({
+            bottom:0,
+            left:0
+        });
+        console.log('yes');
+        self.curStep=0;
+
         self.surpriseBgAni();
         //click ask btn, go exchange
         $('.result-ask .btn').on('touchstart', function(){
@@ -379,7 +435,7 @@
 
         //qrcode
         $('.qrcode .btn-exchange').on('touchstart', function(){
-            self.welcomePage();
+            Common.gotoPin(0);
         });
 
     };
