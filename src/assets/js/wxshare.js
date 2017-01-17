@@ -1,6 +1,6 @@
 ;(function(){
     $.ajax({
-        url:'/jssdk?url='+ encodeURIComponent(location.href.split('#')[0]),
+        url:'/jssdk?url='+ location.href.split('#')[0],
         type:'GET',
         data:'json',
         success:function(data){
