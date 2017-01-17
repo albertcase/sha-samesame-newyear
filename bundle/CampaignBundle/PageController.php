@@ -24,7 +24,7 @@ class PageController extends Controller {
 		$request->validation($fields);
 		$url = urldecode($request->query->get('url'));
 	  	$config = $this->jssdkConfig($url);
-	  	$json = json_encode(array('status' => '1', 'data' => $config));
+	  	$json = json_encode($config);
 	  	return $this->Response($json);
 	}
 
