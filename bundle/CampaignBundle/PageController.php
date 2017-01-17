@@ -17,14 +17,22 @@ class PageController extends Controller {
 	}
 
 	public function jssdkAction() {
-		$request = $this->request;
-    	$fields = array(
-			'url' => array('notnull', '120'),
-		);
+		$request = $this->Request();
+		$fields = array(
+		    'url' => array('notnull', '120'),
+	    );
 		$request->validation($fields);
-		$url = $request->query->get('url');
+		$url = urldecode($request->query->get('url'));
+	  	$this->hostValid($url);
+	  	$config = $this->jssdkConfig($url);
+	  	$json = json_encode(array('status' => '1', 'data' => $config));
+	  	return $this->Response($json);
+	}
+
+	public function jssdkConfig($url = '') {
 		$RedisAPI = new \Lib\RedisAPI();
-		$config = $RedisAPI->jssdkConfig($url);
-		$this->dataPrint($config);
+		$jsapi_ticket = $RedisAPI->getJSApiTicket();
+		$wechatJSSDKAPI = new \Lib\JSSDKAPI();
+		return $wechatJSSDKAPI->getJSSDKConfig(APPID, $jsapi_ticket, $url);
 	}
 }
