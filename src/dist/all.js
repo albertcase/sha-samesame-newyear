@@ -660,7 +660,7 @@ Api = {
 ;(function(){
     $.ajax({
         url:'http://2017cnygreeting.samesamechina.com/jssdk?url=http://2017cnygreeting.samesamechina.com',
-        type:'POST',
+        type:'GET',
         dataType:'json',
         success:function(data){
             console.log(data);
