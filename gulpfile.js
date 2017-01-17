@@ -20,7 +20,7 @@ var path = {
     all:['*.html','./src/assets/css/*.css','./src/dist/css/*.css','./src/assets/js/*.js','./src/assets/js/lib/*.js'],
     template:['./src/*.html'],
     css:['./src/assets/css/*.css'],
-    js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/api.js','./src/assets/js/home.js'],
+    js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/lib/reqAnimate.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/api.js','./src/assets/js/home.js'],
     images:['./src/assets/images/*','./src/dist/images/*'],
 };
 // Browser-sync
@@ -52,6 +52,16 @@ gulp.task('css',['clean'],function () {
         .pipe(gulp.dest('./src/dist/css'));
 });
 
+// Concatenate & Minify
+gulp.task('scripts',['clean'], function() {
+    return gulp.src(path.js)
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('./src/dist'))
+        .pipe(rename('all.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/dist/js'));
+});
+
 gulp.task('copygif', function(){
     gulp.src('./src/assets/images/*.gif')
         .pipe(imagemin())
@@ -76,7 +86,8 @@ gulp.task("tinypng", function(){
 gulp.task('watch', ['clean'],function() {
     //gulp.watch(path.images,['copygif']),
     //gulp.watch(path.images,['tinypng']),
-    gulp.watch(path.all,['css']);
+    gulp.watch(path.css,['css']);
+    gulp.watch(path.js,['scripts']);
 });
 
 // Default Task
