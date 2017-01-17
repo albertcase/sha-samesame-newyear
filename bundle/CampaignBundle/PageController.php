@@ -23,16 +23,14 @@ class PageController extends Controller {
 	    );
 		$request->validation($fields);
 		$url = urldecode($request->query->get('url'));
-	  	echo $config = $this->jssdkConfig($url);exit;
+	  	$config = $this->jssdkConfig($url);
 	  	$json = json_encode(array('status' => '1', 'data' => $config));
-	  	echo $json;exit;
 	  	return $this->Response($json);
 	}
 
 	public function jssdkConfig($url = '') {
 		$RedisAPI = new \Lib\RedisAPI();
 		$jsapi_ticket = $RedisAPI->getJSApiTicket();
-		echo $jsapi_ticket;exit;
 		$wechatJSSDKAPI = new \Lib\JSSDKAPI();
 		return $wechatJSSDKAPI->getJSSDKConfig(APPID, $jsapi_ticket, $url);
 	}
