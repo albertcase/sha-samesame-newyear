@@ -17,6 +17,7 @@ class PageController extends Controller {
 	}
 
 	public function jssdkAction() {
+		echo 1;exit;
 		$request = $this->Request();
 		$fields = array(
 		    'url' => array('notnull', '120'),
