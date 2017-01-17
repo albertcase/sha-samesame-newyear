@@ -108,6 +108,7 @@ html,body{
       -webkit-mask-position: 0% 0; //show
       -webkit-mask-image: url('../images/mask.png');
       -webkit-mask-repeat: no-repeat;
+      //background: rgba(255,0,0,0.5);
       .role-progress{
         position: absolute;
         left: 0;
@@ -139,7 +140,7 @@ html,body{
         -webkit-mask-image: url('../images/mask-floor2.png');
       }
       &.floor3mask{
-        height: 3.64rem;
+        height: 3.7rem;
         -webkit-mask-image: url('../images/mask-floor3.png');
       }
     }
@@ -148,8 +149,8 @@ html,body{
     position: relative;
     border: #582b0b 1px solid;
     margin-bottom: 0.15rem;
-    width: 6.97rem;
-    height: 3.64rem;
+    width: 7.03rem;
+    height: 3.7rem;
     text-align: center;
     .l-bg{
       position: relative;

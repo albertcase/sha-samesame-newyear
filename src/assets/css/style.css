@@ -1164,15 +1164,15 @@ html, body {
   -webkit-mask-image: url("../images/mask-floor2.png");
 }
 #pin-game .pin-content .role.floor3mask {
-  height: 3.64rem;
+  height: 3.7rem;
   -webkit-mask-image: url("../images/mask-floor3.png");
 }
 #pin-game .screen {
   position: relative;
   border: #582b0b 1px solid;
   margin-bottom: 0.15rem;
-  width: 6.97rem;
-  height: 3.64rem;
+  width: 7.03rem;
+  height: 3.7rem;
   text-align: center;
 }
 #pin-game .screen .l-bg {
