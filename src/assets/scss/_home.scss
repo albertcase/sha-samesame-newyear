@@ -79,15 +79,28 @@ html,body{
   }
   .title{
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -0.3rem;
     @include size(7.5rem,12.04rem);
+    left: 50%;
+    @include transform(translateX(-50%));
     z-index: 2;
+    margin: 0;
+  }
+  .tips{
+    position: absolute;
+    top: 2.2rem;
+    left: 50%;
+    @include size(2.86rem,1.05rem);
+    @include transform(translate(-50%,0));
+    z-index: 3;
   }
   .content{
     position: absolute;
     z-index: 3;
     bottom: 0;
+    left: 50%;
+    @include transform(translateX(-50%));
+    @include size(7.5rem,12.04rem);
   }
 }
 
@@ -115,12 +128,13 @@ html,body{
         bottom: 0;
         @include size(3.66rem,1.3rem);
         overflow: hidden;
-        @include transition(all 2s linear);
+        @include transition(left 2s linear,top 2s linear);
+
         &.longtime{
-          @include transition(all 3s linear);
+          @include transition(left 3s linear,top 3s linear);
         }
         &.shorttime{
-          @include transition(all 1s linear);
+          @include transition(left 1s linear,top 1s linear);
         }
         &.change{
           @include transform(rotateY(180deg));
@@ -207,6 +221,28 @@ html,body{
         top: 0;
         left: 0;
         z-index: 2;
+      }
+      .l-bg{
+        .p1{
+          position: absolute;
+          top: 1.18rem;
+          left: 2.98rem;
+          @include size(0.26rem,0.58rem);
+          @include transform-origin(50% 100%);
+          @include animation(lefttoright 1s linear infinite);
+
+          @include keyframes(lefttoright){
+            0%{
+              @include transform(rotate(0deg));
+            }
+            50%{
+              @include transform(rotate(10deg));
+            }
+            100%{
+              @include transform(rotate(0deg));
+            }
+          }
+        }
       }
     }
   }

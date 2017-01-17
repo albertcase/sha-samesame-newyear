@@ -1081,16 +1081,43 @@ html, body {
 }
 #pin-home .title {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -0.3rem;
   width: 7.5rem;
   height: 12.04rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
   z-index: 2;
+  margin: 0;
+}
+#pin-home .tips {
+  position: absolute;
+  top: 2.2rem;
+  left: 50%;
+  width: 2.86rem;
+  height: 1.05rem;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  z-index: 3;
 }
 #pin-home .content {
   position: absolute;
   z-index: 3;
   bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 7.5rem;
+  height: 12.04rem;
 }
 
 #pin-game {
@@ -1118,22 +1145,22 @@ html, body {
   width: 3.66rem;
   height: 1.3rem;
   overflow: hidden;
-  -moz-transition: all 2s linear;
-  -o-transition: all 2s linear;
-  -webkit-transition: all 2s linear;
-  transition: all 2s linear;
+  -moz-transition: left 2s linear, top 2s linear;
+  -o-transition: left 2s linear, top 2s linear;
+  -webkit-transition: left 2s linear, top 2s linear;
+  transition: left 2s linear, top 2s linear;
 }
 #pin-game .pin-content .role .role-progress.longtime {
-  -moz-transition: all 3s linear;
-  -o-transition: all 3s linear;
-  -webkit-transition: all 3s linear;
-  transition: all 3s linear;
+  -moz-transition: left 3s linear, top 3s linear;
+  -o-transition: left 3s linear, top 3s linear;
+  -webkit-transition: left 3s linear, top 3s linear;
+  transition: left 3s linear, top 3s linear;
 }
 #pin-game .pin-content .role .role-progress.shorttime {
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-  transition: all 1s linear;
+  -moz-transition: left 1s linear, top 1s linear;
+  -o-transition: left 1s linear, top 1s linear;
+  -webkit-transition: left 1s linear, top 1s linear;
+  transition: left 1s linear, top 1s linear;
 }
 #pin-game .pin-content .role .role-progress.change {
   -webkit-transform: rotateY(180deg);
@@ -1231,7 +1258,68 @@ html, body {
   left: 0;
   z-index: 2;
 }
-
+#pin-game .screen.screen-3 .l-bg .p1 {
+  position: absolute;
+  top: 1.18rem;
+  left: 2.98rem;
+  width: 0.26rem;
+  height: 0.58rem;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-animation: lefttoright 1s linear infinite;
+  -moz-animation: lefttoright 1s linear infinite;
+  animation: lefttoright 1s linear infinite;
+}
+@-webkit-keyframes lefttoright {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@-moz-keyframes lefttoright {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  50% {
+    -moz-transform: rotate(10deg);
+  }
+  100% {
+    -moz-transform: rotate(0deg);
+  }
+}
+@-o-keyframes lefttoright {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  50% {
+    -o-transform: rotate(10deg);
+  }
+  100% {
+    -o-transform: rotate(0deg);
+  }
+}
+@keyframes lefttoright {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
 .dialogue {
   display: none;
   width: 6rem;
