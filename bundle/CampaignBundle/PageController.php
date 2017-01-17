@@ -22,9 +22,9 @@ class PageController extends Controller {
 		    'url' => array('notnull', '120'),
 	    );
 		$request->validation($fields);
-		echo $url = urldecode($request->query->get('url'));exit;
+		$url = urldecode($request->query->get('url'));
 	  	$this->hostValid($url);
-	  	$config = $this->jssdkConfig($url);
+	  	echo $config = $this->jssdkConfig($url);exit;
 	  	$json = json_encode(array('status' => '1', 'data' => $config));
 	  	echo $json;exit;
 	  	return $this->Response($json);
