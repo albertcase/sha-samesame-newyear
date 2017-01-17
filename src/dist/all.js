@@ -661,6 +661,7 @@ Api = {
     $.ajax({
         url:'http://2017cnygreeting.samesamechina.com/jssdk?url=http://2017cnygreeting.samesamechina.com',
         type:'GET',
+        data:'json',
         success:function(data){
             console.log(data);
             wx.config({
