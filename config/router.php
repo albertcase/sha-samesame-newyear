@@ -10,3 +10,4 @@ $routers['/wechat/ws/jssdk/config/js'] = array('WechatBundle\WebService', 'jssdk
 $routers['/ajax/post'] = array('CampaignBundle\Api', 'form');
 $routers['/'] = array('CampaignBundle\Page', 'index');
 $routers['/clear'] = array('CampaignBundle\Page', 'clearCookie');
+$routers['/jssdk'] = array('CampaignBundle\Page', 'jssdk');

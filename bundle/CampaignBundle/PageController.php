@@ -15,4 +15,16 @@ class PageController extends Controller {
 		setcookie('_user', json_encode($user), time(), '/');
 		$this->statusPrint('success');
 	}
+
+	public function jssdkAction() {
+		$request = $this->request;
+    	$fields = array(
+			'url' => array('notnull', '120'),
+		);
+		$request->validation($fields);
+		$url = $request->request->get('url');
+		$RedisAPI = new \Lib\RedisAPI();
+		$config = $RedisAPI->jssdkConfig($url);
+		$this->dataPrint($config);
+	}
 }
