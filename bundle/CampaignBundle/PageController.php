@@ -17,7 +17,6 @@ class PageController extends Controller {
 	}
 
 	public function jssdkAction() {
-		echo 1;exit;
 		$request = $this->Request();
 		$fields = array(
 		    'url' => array('notnull', '120'),
@@ -27,6 +26,7 @@ class PageController extends Controller {
 	  	$this->hostValid($url);
 	  	$config = $this->jssdkConfig($url);
 	  	$json = json_encode(array('status' => '1', 'data' => $config));
+	  	echo $json;exit;
 	  	return $this->Response($json);
 	}
 
