@@ -1,8 +1,6 @@
 ;(function(){
     $.ajax({
         url:'/jssdk?url='+ location.href.split('#')[0],
-        type:'GET',
-        data:'json',
         success:function(data){
             console.log(data);
             wx.config({
