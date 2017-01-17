@@ -31,8 +31,8 @@ class PageController extends Controller {
 
 	public function jssdkConfig($url = '') {
 		$RedisAPI = new \Lib\RedisAPI();
-		var_dump($RedisAPI);exit;
 		$jsapi_ticket = $RedisAPI->getJSApiTicket();
+		echo $jsapi_ticket;exit;
 		$wechatJSSDKAPI = new \Lib\JSSDKAPI();
 		return $wechatJSSDKAPI->getJSSDKConfig(APPID, $jsapi_ticket, $url);
 	}
