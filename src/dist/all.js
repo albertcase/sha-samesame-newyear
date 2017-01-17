@@ -353,19 +353,6 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.wrapper .pin').removeClass('current');
 			$('.wrapper .pin').eq(num).addClass('current');
 		},
-		goHomePage:function(ishas){
-			if(ishas){
-				window.location.href = '/ec/?ishas=1';
-			}else{
-				window.location.href = '/ec/';
-			}
-		},
-		goOrderPage:function(){
-			window.location.href = '/ec/order';
-		},
-		goPayPage:function(){
-			window.location.href = '/ec/pay';
-		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -597,66 +584,6 @@ $(document).ready(function(){
 
 
 
-/*All the api collection*/
-Api = {
-    //是否还有库存
-    quota:function(callback){
-        Common.msgBox('loading...');
-        $.ajax({
-            url:'/api/quota',
-            type:'POST',
-            dataType:'json',
-            success:function(data){
-                $('.ajaxpop').remove();
-                return callback(data);
-                //status=1 有库存
-            }
-        });
-
-        //return callback({
-        //    status:1,
-        //    msg:'success'
-        //})
-
-
-    },
-
-    //保存用户订单信息
-    //sex  name  mobile email province city address
-    order:function(obj,callback){
-        Common.msgBox('loading...');
-        $.ajax({
-            url:'/api/order',
-            type:'POST',
-            dataType:'json',
-            data:obj,
-            success:function(data){
-                $('.ajaxpop').remove();
-                return callback(data);
-            }
-        });
-
-
-    },
-    //预约到店
-    //sex  name  mobile  province city store month day time
-    reservation:function(obj,callback){
-        Common.msgBox('loading...');
-        $.ajax({
-            url:'/api/submit',
-            type:'POST',
-            dataType:'json',
-            data:obj,
-            success:function(data){
-                $('.ajaxpop').remove();
-                return callback(data);
-            }
-        });
-    },
-
-
-
-};
 ;(function(){
     $.ajax({
         url:'/jssdk?url='+ location.href.split('#')[0],
@@ -761,7 +688,31 @@ Api = {
         //self.doGame();
         var baseurl = 'src/dist/images/';
         var imagesArray = [
-            //baseurl+'logo.png',
+            baseurl+'3eventbefore.png',
+            baseurl+'f3-1.png',
+            baseurl+'maintips.png',
+            baseurl+'mask-floor2.png',
+            baseurl+'mask-floor3.png',
+            baseurl+'text-2.png',
+            baseurl+'0facade_bg.gif',
+            baseurl+'0facade_title.gif',
+            baseurl+'1eventafter2.gif',
+            baseurl+'1eventbefore2.gif',
+            baseurl+'1floorbg.jpg',
+            baseurl+'2floorbg.jpg',
+            baseurl+'3floorbg.jpg',
+            baseurl+'chickens.gif',
+            baseurl+'dialogue-btn-text.png',
+            baseurl+'dialogue-content-text.png',
+            baseurl+'dialoguebg1.gif',
+            baseurl+'dialoguebg2.gif',
+            baseurl+'p3-t1.png',
+            baseurl+'pipe.png',
+            baseurl+'qr-code.png',
+            baseurl+'result1.png',
+            baseurl+'result2.png',
+            baseurl+'result3.png',
+            baseurl+'share.png',
         ];
         imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray);
         var i = 0;
@@ -777,8 +728,8 @@ Api = {
                 //
                 $('.preload').remove();
                 $('.container').addClass('fade');
-                //self.welcomePage();
-                self.doGame();
+                self.welcomePage();
+                //self.doGame();
                 //self.getSurprise();
 
             }
@@ -886,8 +837,8 @@ Api = {
                         if(self.curStep ==4){
                             $('#floor2 .dialogue').removeClass('show');
                             //after animation
-                            $('#floor2 .level').addClass('after');
-                            $('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $('#floor2 .level').addClass('fadein');
+                            //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
                             $(ele).css('left',minPosX);
                         }
                     });
@@ -909,8 +860,7 @@ Api = {
                         if(self.curStep ==7){
                             $('#floor3 .dialogue').removeClass('show');
                             //after animation
-                            //$('#floor3 .level').addClass('after');
-                            //$('#floor3 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $('#floor3 .level').addClass('fadein');
                             $(ele).css('left',floor3PosXEnd-20);
                         }
                     });

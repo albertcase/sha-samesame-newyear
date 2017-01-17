@@ -128,13 +128,13 @@ html,body{
         bottom: 0;
         @include size(3.66rem,1.3rem);
         overflow: hidden;
-        @include transition(left 2s linear,top 2s linear);
+        @include transition(all 2s linear);
 
         &.longtime{
-          @include transition(left 3s linear,top 3s linear);
+          @include transition(all 3s linear);
         }
         &.shorttime{
-          @include transition(left 1s linear,top 1s linear);
+          @include transition(all 1s linear);
         }
         &.change{
           @include transform(rotateY(180deg));
@@ -212,6 +212,18 @@ html,body{
         left: -0.18rem;
         transform: rotateZ(180deg);
       }
+      .level{
+        opacity: 0;
+        left: 2rem;
+        top: .2rem;
+        @include size(1.86rem,1.7rem);
+        background: url('../images/text-2.png') 0 50% no-repeat;
+        background-size: 100% 300%;
+        @include transition(opacity 1s linear);
+        &.fadein{
+          opacity: 1;
+        }
+      }
     }
     &.screen-3{
       background: url("../images/3floorbg.jpg") no-repeat;
@@ -244,6 +256,20 @@ html,body{
           }
         }
       }
+      //
+      .level{
+        opacity: 0;
+        left: 3.2rem;
+        top: 0.3rem;
+        @include size(1.86rem,1.7rem);
+        background: url('../images/text-2.png') 0 0% no-repeat;
+        background-size: 100% 300%;
+        @include transition(opacity 1s linear);
+        &.fadein{
+          opacity: 1;
+        }
+      }
+
     }
   }
 }

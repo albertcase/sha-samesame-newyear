@@ -52,7 +52,31 @@
         //self.doGame();
         var baseurl = 'src/dist/images/';
         var imagesArray = [
-            //baseurl+'logo.png',
+            baseurl+'3eventbefore.png',
+            baseurl+'f3-1.png',
+            baseurl+'maintips.png',
+            baseurl+'mask-floor2.png',
+            baseurl+'mask-floor3.png',
+            baseurl+'text-2.png',
+            baseurl+'0facade_bg.gif',
+            baseurl+'0facade_title.gif',
+            baseurl+'1eventafter2.gif',
+            baseurl+'1eventbefore2.gif',
+            baseurl+'1floorbg.jpg',
+            baseurl+'2floorbg.jpg',
+            baseurl+'3floorbg.jpg',
+            baseurl+'chickens.gif',
+            baseurl+'dialogue-btn-text.png',
+            baseurl+'dialogue-content-text.png',
+            baseurl+'dialoguebg1.gif',
+            baseurl+'dialoguebg2.gif',
+            baseurl+'p3-t1.png',
+            baseurl+'pipe.png',
+            baseurl+'qr-code.png',
+            baseurl+'result1.png',
+            baseurl+'result2.png',
+            baseurl+'result3.png',
+            baseurl+'share.png',
         ];
         imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray);
         var i = 0;
@@ -68,8 +92,8 @@
                 //
                 $('.preload').remove();
                 $('.container').addClass('fade');
-                //self.welcomePage();
-                self.doGame();
+                self.welcomePage();
+                //self.doGame();
                 //self.getSurprise();
 
             }
@@ -177,8 +201,8 @@
                         if(self.curStep ==4){
                             $('#floor2 .dialogue').removeClass('show');
                             //after animation
-                            $('#floor2 .level').addClass('after');
-                            $('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $('#floor2 .level').addClass('fadein');
+                            //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
                             $(ele).css('left',minPosX);
                         }
                     });
@@ -200,8 +224,7 @@
                         if(self.curStep ==7){
                             $('#floor3 .dialogue').removeClass('show');
                             //after animation
-                            //$('#floor3 .level').addClass('after');
-                            //$('#floor3 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                            $('#floor3 .level').addClass('fadein');
                             $(ele).css('left',floor3PosXEnd-20);
                         }
                     });

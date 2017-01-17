@@ -20,7 +20,7 @@ var path = {
     all:['*.html','./src/assets/css/*.css','./src/dist/css/*.css','./src/assets/js/*.js','./src/assets/js/lib/*.js'],
     template:['./src/*.html'],
     css:['./src/assets/css/*.css'],
-    js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/lib/reqAnimate.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/api.js','./src/assets/js/wxshare.js','./src/assets/js/home.js'],
+    js:['./src/assets/js/lib/zepto.min.js','./src/assets/js/lib/pre-loader.js','./src/assets/js/lib/reqAnimate.js','./src/assets/js/rem.js','./src/assets/js/common.js','./src/assets/js/wxshare.js','./src/assets/js/home.js'],
     images:['./src/assets/images/*','./src/dist/images/*'],
 };
 // Browser-sync

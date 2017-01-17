@@ -1145,22 +1145,22 @@ html, body {
   width: 3.66rem;
   height: 1.3rem;
   overflow: hidden;
-  -moz-transition: left 2s linear, top 2s linear;
-  -o-transition: left 2s linear, top 2s linear;
-  -webkit-transition: left 2s linear, top 2s linear;
-  transition: left 2s linear, top 2s linear;
+  -moz-transition: all 2s linear;
+  -o-transition: all 2s linear;
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
 }
 #pin-game .pin-content .role .role-progress.longtime {
-  -moz-transition: left 3s linear, top 3s linear;
-  -o-transition: left 3s linear, top 3s linear;
-  -webkit-transition: left 3s linear, top 3s linear;
-  transition: left 3s linear, top 3s linear;
+  -moz-transition: all 3s linear;
+  -o-transition: all 3s linear;
+  -webkit-transition: all 3s linear;
+  transition: all 3s linear;
 }
 #pin-game .pin-content .role .role-progress.shorttime {
-  -moz-transition: left 1s linear, top 1s linear;
-  -o-transition: left 1s linear, top 1s linear;
-  -webkit-transition: left 1s linear, top 1s linear;
-  transition: left 1s linear, top 1s linear;
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
 }
 #pin-game .pin-content .role .role-progress.change {
   -webkit-transform: rotateY(180deg);
@@ -1248,6 +1248,22 @@ html, body {
   left: -0.18rem;
   transform: rotateZ(180deg);
 }
+#pin-game .screen.screen-2 .level {
+  opacity: 0;
+  left: 2rem;
+  top: .2rem;
+  width: 1.86rem;
+  height: 1.7rem;
+  background: url("../images/text-2.png") 0 50% no-repeat;
+  background-size: 100% 300%;
+  -moz-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+#pin-game .screen.screen-2 .level.fadein {
+  opacity: 1;
+}
 #pin-game .screen.screen-3 {
   background: url("../images/3floorbg.jpg") no-repeat;
   background-size: 100%;
@@ -1320,6 +1336,23 @@ html, body {
     transform: rotate(0deg);
   }
 }
+#pin-game .screen.screen-3 .level {
+  opacity: 0;
+  left: 3.2rem;
+  top: 0.3rem;
+  width: 1.86rem;
+  height: 1.7rem;
+  background: url("../images/text-2.png") 0 0% no-repeat;
+  background-size: 100% 300%;
+  -moz-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+#pin-game .screen.screen-3 .level.fadein {
+  opacity: 1;
+}
+
 .dialogue {
   display: none;
   width: 6rem;
