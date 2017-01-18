@@ -167,9 +167,17 @@ html,body{
     height: 3.7rem;
     text-align: center;
     .l-bg{
-      position: relative;
-      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
     }
+    //.l-bg2{
+    //  position: absolute;
+    //  left: 0;
+    //  top: 0;
+    //  z-index: 2;
+    //}
     .pipe{
       position: absolute;
       right: -0.18rem;
@@ -208,6 +216,14 @@ html,body{
     &.screen-2{
       background: url("../images/2floorbg.jpg") no-repeat;
       background-size: 100%;
+      .l-bg{
+        opacity: 0;
+        display: none;
+        &.current{
+          opacity: 1;
+          display: block;
+        }
+      }
       .pipe{
         left: -0.18rem;
         transform: rotateZ(180deg);

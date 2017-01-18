@@ -13,10 +13,11 @@
         this.floor1_imageArray = [];
         this.facade_imageArray = [];
         this.floor2_before_imageArray = [];
+        this.floor2_after_imageArray = [];
         this.floor3_afterArrow_imageArray = [];
         this.suprise_imageArray = [];
         var ArrLength=120;
-        var newstring='',newstring2='',newstring3='',newstring4='',newstring5='';
+        var newstring='',newstring2='',newstring3='',newstring4='',newstring5='',newstring6='';
         for(var i=0;i<ArrLength;i=i+6){
             if(i<10){
                 newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_0000'+i+'.png';
@@ -24,24 +25,28 @@
                 newstring3='src/dist/images/'+'2before/2before_0000'+i+'.png';
                 newstring4='src/dist/images/'+'3afterarrow/3afterarrow_0000'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_0000'+i+'.jpg';
+                newstring6='src/dist/images/'+'2afterframe/2afterframe_0000'+i+'.png';
             }else if(i>9 && i<100){
                 newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_000'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_000'+i+'.png';
                 newstring3='src/dist/images/'+'2before/2before_000'+i+'.png';
                 newstring4='src/dist/images/'+'3afterarrow/3afterarrow_000'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_000'+i+'.jpg';
+                newstring6='src/dist/images/'+'2afterframe/2afterframe_000'+i+'.png';
             }else{
                 newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_00'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_00'+i+'.png';
                 newstring3='src/dist/images/'+'2before/2before_00'+i+'.png';
                 newstring4='src/dist/images/'+'3afterarrow/3afterarrow_00'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_00'+i+'.jpg';
+                newstring6='src/dist/images/'+'2afterframe/2afterframe_00'+i+'.png';
             }
             this.floor1_imageArray.push(newstring);
             this.facade_imageArray.push(newstring2);
             this.floor2_before_imageArray.push(newstring3);
             this.floor3_afterArrow_imageArray.push(newstring4);
             this.suprise_imageArray.push(newstring5);
+            this.floor2_after_imageArray.push(newstring6);
         };
 
 
@@ -77,7 +82,7 @@
             baseurl+'result3.png',
             baseurl+'share.png',
         ];
-        imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray);
+        imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray).concat(self.floor2_after_imageArray);
         var i = 0;
         new preLoader(imagesArray, {
             onProgress: function(){
@@ -233,8 +238,8 @@
                         self.getSurprise();
                         break;
                 };
-                //self.enableMove = false;
             }
+
 
         });
 
@@ -254,8 +259,10 @@
             if(self.curStep ==3){
                 $('#floor2 .dialogue').removeClass('show');
                 //after animation
-                $('#floor2 .level').addClass('fadein');
+                //$('#floor2 .level').addClass('fadein');
                 //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                //do bg animation
+                self.animateForFloor2Before(false);
                 $(ele).css('left',minPosX);
                 self.curStep++;
             }
@@ -288,6 +295,8 @@
         //qrcode
         $('.qrcode .btn-exchange').on('touchstart', function(){
             Common.gotoPin(0);
+            $('.result-ask').addClass('show');
+            $('.qrcode').removeClass('show');
         });
     };
 
@@ -295,8 +304,9 @@
     controller.prototype.doGame = function(){
         var self = this;
         Common.gotoPin(1);
-        self.animateForFloor2Before();
+        self.animateForFloor2Before(true);
         self.animateForFloor1();
+        self.enableTrackingAnimated = true;
 
         var container = $('.pin-content');
         var scrren_1 = $('.screen-1');
@@ -310,27 +320,59 @@
         $(ele).addClass('shorttime').css('left',firstLevelPosX);
 
     };
-    controller.prototype.animateForFloor2Before = function () {
+    controller.prototype.animateForFloor2Before = function (isbefore) {
         var self = this;
         var j = 0;
-        var reqAnimateFloor2Before = new reqAnimate($('#floor2 .l-bg img'),{
+        var reqAnimateFloor2Before,reqAnimateFloor2After;
+        reqAnimateFloor2Before = new reqAnimate($('#floor2 .l-bg1 img'),{
             fps: 6,
             totalFrames: 20,
             //time: 0,
             processAnimation: function(){
-                var imgName = self.floor2_before_imageArray[j];
+                var imgName;
+                imgName = self.floor2_before_imageArray[j];
                 if(j>self.floor2_before_imageArray.length-2){
                     j=0;
                 }
                 j++;
-                $('#floor2 .l-bg img').attr('src',imgName);
+                $('#floor2 .l-bg1 img').attr('src',imgName);
             },
             doneAnimation: function(){
 
                 //show box and letter
             }
         });
-        reqAnimateFloor2Before.start();
+        //reqAnimateFloor2Before.start();
+
+        reqAnimateFloor2After = new reqAnimate($('#floor2 .l-bg2 img'),{
+            fps: 6,
+            totalFrames: 20,
+            //time: 0,
+            processAnimation: function(){
+                var imgName;
+                imgName = self.floor2_after_imageArray[j];
+                if(j>self.floor2_after_imageArray.length-2){
+                    j=0;
+                }
+                j++;
+                $('#floor2 .l-bg2 img').attr('src',imgName);
+            },
+            doneAnimation: function(){
+
+                //show box and letter
+            }
+        });
+
+        if(isbefore){
+            reqAnimateFloor2Before.start();
+            $('#floor2 .l-bg1').addClass('current');
+            $('#floor2 .l-bg2').removeClass('current');
+        }else{
+            reqAnimateFloor2After.start();
+            $('#floor2 .l-bg2').addClass('current');
+            $('#floor2 .l-bg1').removeClass('current');
+        }
+
 
     };
     controller.prototype.animateForFloor1 = function () {
@@ -387,13 +429,13 @@
         var self = this;
         Common.gotoPin(2);
         self.surpriseBgAni();
+
         //reset page game
         $('#pin-game .role').removeClass('floor2mask floor3mask');
         $('#pin-game .role-progress').removeClass('longtime changedirection shorttime').css({
             bottom:0,
             left:0
         });
-        console.log('yes');
         self.curStep=0;
 
     };
@@ -422,15 +464,28 @@
 
     };
 
-    //dom ready
-    $(document).ready(function(){
 
-        var welcome = new controller();
-        welcome.init();
+    if (typeof define === 'function' && define.amd){
+        // we have an AMD loader.
+        define(function(){
+            return controller;
+        });
+    }
+    else {
+        this.controller = controller;
+    }
+
+}).call(this);
+
+//dom ready
+$(document).ready(function(){
+
+    var welcome = new controller();
+    welcome.init();
 
 
-    });
+});
 
 
-})();
+
 
