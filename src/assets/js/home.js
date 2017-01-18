@@ -139,6 +139,23 @@
 
         var self  = this;
 
+        //for bgm
+        var bgmEle = document.getElementById('bgm');
+        bgmEle.play();
+        $('.icon-bgm').addClass('play');
+        var isPlaying = true;
+        $('.icon-bgm').on('touchstart',function(){
+            $(this).toggleClass('play');
+            if(isPlaying){
+                bgmEle.pause();
+                isPlaying=false;
+            }else{
+                bgmEle.play();
+                isPlaying=true;
+            }
+
+        });
+
         //for homepage
         //    click page, go game page
         $('#pin-home').on('touchstart',function(){

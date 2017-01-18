@@ -519,3 +519,25 @@ html,body{
     }
   }
 }
+
+//for bgm
+.icon-bgm{
+  position: absolute;
+  @include size(1rem,1rem);
+  right: 0.1rem;
+  top: 0.1rem;
+  z-index: 100;
+  background: green;
+  border-radius: 100%;
+  &.play{
+    @include animation(circleTransform 3s linear infinite);
+  }
+  @include keyframes(circleTransform){
+    0%{
+      @include transform(rotate(0deg));
+    }
+    100%{
+      @include transform(rotate(360deg));
+    }
+  }
+}
