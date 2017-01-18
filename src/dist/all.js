@@ -603,10 +603,10 @@ $(document).ready(function(){
                 //    menuList: ["menuItem:share:appMessage","menuItem:share:timeline","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:facebook","menuItem:share:QZone","menuItem:copyUrl","menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email"] // 要显示的菜单项，所有menu项见附录3
                 //});
                 wx.onMenuShareAppMessage({
-                    title: '一七送你好时机 wx',
-                    desc: '一七送你好时机',
+                    title: '众异送你好时机，丁酉一七度佳节',
+                    desc: '',
                     link: window.location.href,
-                    imgUrl: window.location.origin+'/src/dist/images/share.png',
+                    imgUrl: window.location.origin+'/src/dist/images/share.jpg',
                     type: '',
                     dataUrl: '',
                     success: function () {
@@ -617,9 +617,9 @@ $(document).ready(function(){
                     }
                 });
                 wx.onMenuShareTimeline({
-                    title: '一七送你好时机 wx',
+                    title: '众异送你好时机，丁酉一七度佳节',
                     link: window.location.href,
-                    imgUrl: window.location.origin+'/src/dist/images/share.png',
+                    imgUrl: window.location.origin+'/src/dist/images/share.jpg',
                     success: function () {
 
                     },
@@ -716,7 +716,8 @@ $(document).ready(function(){
             baseurl+'result1.png',
             baseurl+'result2.png',
             baseurl+'result3.png',
-            baseurl+'share.png',
+            baseurl+'share.jpg',
+            baseurl+'icon-bgm.png',
         ];
         imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray).concat(self.floor2_after_imageArray);
         var i = 0;

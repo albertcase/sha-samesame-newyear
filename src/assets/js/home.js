@@ -80,7 +80,8 @@
             baseurl+'result1.png',
             baseurl+'result2.png',
             baseurl+'result3.png',
-            baseurl+'share.png',
+            baseurl+'share.jpg',
+            baseurl+'icon-bgm.png',
         ];
         imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray).concat(self.floor2_after_imageArray);
         var i = 0;

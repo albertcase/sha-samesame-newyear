@@ -17,10 +17,10 @@
                 //    menuList: ["menuItem:share:appMessage","menuItem:share:timeline","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:facebook","menuItem:share:QZone","menuItem:copyUrl","menuItem:openWithQQBrowser","menuItem:openWithSafari","menuItem:share:email"] // 要显示的菜单项，所有menu项见附录3
                 //});
                 wx.onMenuShareAppMessage({
-                    title: '一七送你好时机 wx',
-                    desc: '一七送你好时机',
+                    title: '众异送你好时机，丁酉一七度佳节',
+                    desc: '',
                     link: window.location.href,
-                    imgUrl: window.location.origin+'/src/dist/images/share.png',
+                    imgUrl: window.location.origin+'/src/dist/images/share.jpg',
                     type: '',
                     dataUrl: '',
                     success: function () {
@@ -31,9 +31,9 @@
                     }
                 });
                 wx.onMenuShareTimeline({
-                    title: '一七送你好时机 wx',
+                    title: '众异送你好时机，丁酉一七度佳节',
                     link: window.location.href,
-                    imgUrl: window.location.origin+'/src/dist/images/share.png',
+                    imgUrl: window.location.origin+'/src/dist/images/share.jpg',
                     success: function () {
 
                     },
