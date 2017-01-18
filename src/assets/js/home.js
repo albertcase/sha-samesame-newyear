@@ -176,16 +176,10 @@
         ele.addEventListener('transitionend',function(){
             var maxPosX = container.width();
             var chickenLength = $(ele).width()*0.6;
-            var minPosX = -$(ele).width(),
-                minPosY = 0,maxPosY = container.height() - scrren_1.height();
-            var firstPosX = container.width()/2 - $('.role .role-progress').width()/ 2,
-                firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
-
+            var firstLevelPosX = container.width()*0.45 - chickenLength;
             var floor2LevelPosX =$('#floor2').width()*0.4,
-                floor1PosY = scrren_1[0].offsetTop + scrren_1.height() - $('.role').height(),
                 floor2PosY = scrren_2[0].offsetTop + scrren_2.height() - $('.role').height(),
                 floor3PosY = 0;
-
             var floor3PosXEnd = $('#floor2').width()*0.77 - $(ele).width()*0.5;
             if(self.enableTrackingAnimated){
                 switch (self.curStep)
@@ -228,7 +222,6 @@
                     case 6:
                         console.log("floor3: from floor3 left to middle");
                         $('#floor3 .dialogue').addClass('show');
-
                         break;
                     case 7:
                         console.log("floor3: from floor3 middle to right");
@@ -330,7 +323,7 @@
 
         var ele = document.getElementById('action-chicken');
         var chickenLength = $(ele).width()*0.6;
-        var firstLevelPosX = $('#floor1 .level')[0].offsetLeft - chickenLength;
+        var firstLevelPosX = container.width()*0.45 - chickenLength;
 
         var floor1PosY = scrren_1[0].offsetTop + scrren_1.height() - $('.role').height();
         $('.role').css('top',floor1PosY);

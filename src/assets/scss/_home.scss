@@ -128,13 +128,12 @@ html,body{
         bottom: 0;
         @include size(3.66rem,1.3rem);
         overflow: hidden;
-        @include transition(all 2s linear);
-
+        @include transition(all 4s linear);
         &.longtime{
-          @include transition(all 3s linear);
+          //@include transition(all 3s linear);
         }
         &.shorttime{
-          @include transition(all 1s linear);
+          //@include transition(all 1s linear);
         }
         &.change{
           @include transform(rotateY(180deg));
