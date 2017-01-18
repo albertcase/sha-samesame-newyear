@@ -586,7 +586,7 @@ $(document).ready(function(){
 
 ;(function(){
     $.ajax({
-        url:'/jssdk?url='+ location.href.split('#')[0],
+        url:'/jssdk?url='+ encodeURIComponent(location.href.split('#')[0]),
         success:function(response){
             var data = $.parseJSON(response);
             console.log(data);
