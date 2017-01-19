@@ -146,11 +146,19 @@
 
         //for bgm
         var bgmEle = document.getElementById('bgm');
+
+        bgmEle.load();
         bgmEle.play();
-        $('.icon-bgm').addClass('play');
-        var isPlaying = true;
+        $('#bgm').on('play',function(){
+            $('.icon-bgm').addClass('play');
+        });
+        $('#bgm').on('pause',function(){
+            $('.icon-bgm').removeClass('play');
+        });
+        //$('.icon-bgm').addClass('play');
+        var isPlaying = false;
         $('.icon-bgm').on('touchstart',function(){
-            $(this).toggleClass('play');
+            //$(this).toggleClass('play');
             if(isPlaying){
                 bgmEle.pause();
                 isPlaying=false;
@@ -158,7 +166,6 @@
                 bgmEle.play();
                 isPlaying=true;
             }
-
         });
 
         //for homepage
