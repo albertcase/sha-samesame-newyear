@@ -23,8 +23,7 @@
                     type: '',
                     dataUrl: '',
                     success: function () {
-
-
+                        _hmt.push(['_trackEvent', 'share', 'share', 'onMenuShareAppMessage']);
                     },
                     cancel: function () {
                     }
@@ -34,7 +33,7 @@
                     link: window.location.href,
                     imgUrl: window.location.origin+'/src/dist/images/share.jpg',
                     success: function () {
-
+                        _hmt.push(['_trackEvent', 'share', 'share', 'onMenuShareTimeline']);
                     },
                     cancel: function () {
 

@@ -609,8 +609,7 @@ $(document).ready(function(){
                     type: '',
                     dataUrl: '',
                     success: function () {
-
-
+                        _hmt.push(['_trackEvent', 'share', 'share', 'onMenuShareAppMessage']);
                     },
                     cancel: function () {
                     }
@@ -620,7 +619,7 @@ $(document).ready(function(){
                     link: window.location.href,
                     imgUrl: window.location.origin+'/src/dist/images/share.jpg',
                     success: function () {
-
+                        _hmt.push(['_trackEvent', 'share', 'share', 'onMenuShareTimeline']);
                     },
                     cancel: function () {
 
