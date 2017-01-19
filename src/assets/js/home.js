@@ -283,7 +283,7 @@
                 //$('#floor2 .level').addClass('fadein');
                 //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
                 //do bg animation
-                $('#floor2 .l-bg1').addClass('before');
+                $('#floor2 .l-bg1').addClass('after');
                 $(ele).css('left',minPosX);
                 self.curStep++;
             }
