@@ -77,8 +77,8 @@
                 //
                 $('.preload').remove();
                 $('.container').addClass('fade');
-                //self.welcomePage();
-                self.doGame();
+                self.welcomePage();
+                //self.doGame();
                 //self.getSurprise();
                 self.bindEvent();
             }
