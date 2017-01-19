@@ -1065,6 +1065,35 @@ html, body {
   transform: translate(-50%, -50%);
 }
 
+.loading-img {
+  width: 2.06rem;
+  height: 2.98rem;
+  background: url("../images/loading.png") no-repeat;
+  background-size: 100% 400%;
+  -webkit-animation: loading 1s steps(3) infinite;
+  -moz-animation: loading 1s steps(3) infinite;
+  animation: loading 1s steps(3) infinite;
+}
+@-webkit-keyframes loading {
+  100% {
+    background-position: 0 100%;
+  }
+}
+@-moz-keyframes loading {
+  100% {
+    background-position: 0 100%;
+  }
+}
+@-o-keyframes loading {
+  100% {
+    background-position: 0 100%;
+  }
+}
+@keyframes loading {
+  100% {
+    background-position: 0 100%;
+  }
+}
 #pin-home .bg {
   position: absolute;
   left: 0;

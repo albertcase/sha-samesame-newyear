@@ -666,7 +666,9 @@ $(document).ready(function(){
         var self = this;
         var baseurl = 'src/dist/images/';
         var imagesArray = [
+            baseurl+'loading.png',
             baseurl+'title.png',
+            baseurl+'tips.png',
             baseurl+'maintips.png',
             baseurl+'mask-floor2.png',
             baseurl+'mask-floor3.png',
@@ -704,7 +706,7 @@ $(document).ready(function(){
                 i++;
                 var progress = parseInt(i/imagesArray.length*100);
                 //console.log(progress);
-                $('.preload .v-content').html('已加载'+progress+'%');
+                $('.preload .loading-progress').html('已加载'+progress+'%');
             },
             onComplete: function(){
                 //

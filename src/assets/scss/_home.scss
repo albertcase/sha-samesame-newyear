@@ -63,6 +63,20 @@ html,body{
   @include transform(translate(-50%,-50%));
 }
 
+//for loading
+.loading-img{
+  @include size(2.06rem,2.98rem);
+  background: url('../images/loading.png') no-repeat;
+  background-size: 100% 400%;
+  @include animation(loading 1s steps(3) infinite);
+  @include keyframes(loading){
+    100%{
+      background-position: 0 100%;
+    }
+  };
+}
+
+
 //for home page
 #pin-home{
   .bg{
