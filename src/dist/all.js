@@ -757,16 +757,16 @@ $(document).ready(function(){
         var self  = this;
 
         //for bgm
-        var bgmEle = document.getElementById('bgm');
-
-        bgmEle.load();
-        bgmEle.play();
-        $('#bgm').on('play',function(){
-            $('.icon-bgm').addClass('play');
-        });
-        $('#bgm').on('pause',function(){
-            $('.icon-bgm').removeClass('play');
-        });
+        //var bgmEle = document.getElementById('bgm');
+        //
+        //bgmEle.load();
+        //bgmEle.play();
+        //$('#bgm').on('play',function(){
+        //    $('.icon-bgm').addClass('play');
+        //});
+        //$('#bgm').on('pause',function(){
+        //    $('.icon-bgm').removeClass('play');
+        //});
         //$('.icon-bgm').addClass('play');
         var isPlaying = false;
         $('.icon-bgm').on('touchstart',function(){
