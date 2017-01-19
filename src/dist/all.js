@@ -781,10 +781,24 @@ $(document).ready(function(){
         //for homepage
         //    click page, go game page
         $('#pin-home').on('touchstart',function(){
+            //Common.gotoPin(1);
             //reqAnimateHome.cancel();
-            self.enableTrackingAnimated = true;
+            //self.enableTrackingAnimated = true;
             self.doGame();
+            $('#game-pop').addClass('show');
+
         });
+
+        //for pop
+        $('#game-pop .btn').on('touchstart',function(){
+            $('#game-pop').removeClass('show');
+            self.enableTrackingAnimated = true;
+            var ele = document.getElementById('action-chicken');
+            var chickenLength = $(ele).width()*0.6;
+            var firstLevelPosX = $('.pin-content').width()*0.45 - chickenLength;
+            $(ele).addClass('shorttime').css('left',firstLevelPosX);
+        });
+
 
         //for game page
         var container = $('.pin-content');
@@ -866,6 +880,10 @@ $(document).ready(function(){
                         break;
                     case 9:
                         console.log("floor3: from floor3 out to hide");
+                        //reset
+                        $('#floor1 .level').removeClass('after');
+                        $('#floor2 .l-bg').removeClass('after');
+                        $('#floor3 .l-bg').removeClass('after');
                         self.enableTrackingAnimated = false;
                         self.getSurprise();
                         break;
@@ -945,7 +963,7 @@ $(document).ready(function(){
 
         var floor1PosY = scrren_1[0].offsetTop + scrren_1.height() - $('.role').height();
         $('.role').css('top',floor1PosY);
-        $(ele).addClass('shorttime').css('left',firstLevelPosX);
+        //$(ele).addClass('shorttime').css('left',firstLevelPosX);
 
     };
     controller.prototype.animateForFloor2Before = function (isbefore) {

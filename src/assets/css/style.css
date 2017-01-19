@@ -1669,3 +1669,83 @@ html, body {
     transform: rotate(360deg);
   }
 }
+#game-pop {
+  position: absolute;
+  z-index: 100;
+  background: transparent;
+}
+#game-pop .btn {
+  position: absolute;
+  bottom: 0.96rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: #cd1350;
+  border-radius: 20px;
+  border: #5c2c15 0.04rem solid;
+  width: 2.4rem;
+  height: 0.75rem;
+  box-sizing: border-box;
+}
+#game-pop .btn span {
+  position: absolute;
+  bottom: 0.05rem;
+  left: -0.04rem;
+  width: 2.4rem;
+  height: 0.75rem;
+  line-height: 0.75rem;
+  text-align: center;
+  padding: 0;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background: #f4417b;
+  color: #fff;
+  border: #5c2c15 0.04rem solid;
+  -webkit-animation: btnAni 1s steps(2) infinite;
+  -moz-animation: btnAni 1s steps(2) infinite;
+  animation: btnAni 1s steps(2) infinite;
+}
+
+@-webkit-keyframes btnAni2 {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4417b;
+    bottom: 0.1rem;
+  }
+}
+@-moz-keyframes btnAni2 {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4417b;
+    bottom: 0.1rem;
+  }
+}
+@-o-keyframes btnAni2 {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4417b;
+    bottom: 0.1rem;
+  }
+}
+@keyframes btnAni2 {
+  0% {
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100% {
+    background-color: #f4417b;
+    bottom: 0.1rem;
+  }
+}

@@ -534,3 +534,47 @@ html,body{
     }
   }
 }
+
+//for game-pop
+#game-pop{
+  position: absolute;
+  z-index: 100;
+  background:transparent;
+  .btn{
+    position: absolute;
+    bottom: 0.96rem;
+    left: 50%;
+    @include transform(translateX(-50%));
+    background: #cd1350;
+    border-radius: 20px;
+    border: #5c2c15 0.04rem solid;
+    @include size(2.4rem,0.75rem);
+    box-sizing: border-box;
+    span{
+      position: absolute;
+      bottom: 0.05rem;
+      left: -0.04rem;
+      @include size(2.4rem,0.75rem);
+      line-height: 0.75rem;
+      text-align: center;
+      padding: 0;
+      border-radius:20px;
+      box-sizing: border-box;
+      background: #f4417b;
+      color: #fff;
+      border: #5c2c15 0.04rem solid;
+      @include animation(btnAni 1s steps(2) infinite);
+    }
+  }
+}
+
+@include keyframes(btnAni2){
+  0%{
+    background-color: #cd1350;
+    bottom: -0.04rem;
+  }
+  100%{
+    background-color: #f4417b;
+    bottom: 0.1rem;
+  }
+}
