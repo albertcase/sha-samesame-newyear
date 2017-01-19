@@ -231,10 +231,6 @@
                         console.log("floor3: from floor3 middle to right");
                         //transform the element
                         self.animateForFloor3();
-                        //$(ele).css({
-                        //    left:firstLevelPosX+250,
-                        //    bottom:0,
-                        //});
                         $(ele).css('left',floor3PosXEnd);
                         self.curStep++;
                         break;
@@ -252,6 +248,8 @@
                         $('#floor1 .level').removeClass('after');
                         $('#floor2 .l-bg').removeClass('after');
                         $('#floor3 .l-bg').removeClass('after');
+                        $('#floor3 .arrow').attr('style','');
+                        //background-size: 1408px 925px; background-position: -1056px -740px;
                         self.enableTrackingAnimated = false;
                         self.getSurprise();
                         break;
