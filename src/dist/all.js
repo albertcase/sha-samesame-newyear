@@ -655,33 +655,33 @@ $(document).ready(function(){
         var newstring='',newstring2='',newstring3='',newstring4='',newstring5='',newstring6='';
         for(var i=0;i<ArrLength;i=i+6){
             if(i<10){
-                newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_0000'+i+'.png';
+                //newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_0000'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_0000'+i+'.png';
-                newstring3='src/dist/images/'+'2before/2before_0000'+i+'.png';
-                newstring4='src/dist/images/'+'3afterarrow/3afterarrow_0000'+i+'.png';
+                //newstring3='src/dist/images/'+'2before/2before_0000'+i+'.png';
+                //newstring4='src/dist/images/'+'3afterarrow/3afterarrow_0000'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_0000'+i+'.jpg';
-                newstring6='src/dist/images/'+'2afterframe/2afterframe_0000'+i+'.png';
+                //newstring6='src/dist/images/'+'2afterframe/2afterframe_0000'+i+'.png';
             }else if(i>9 && i<100){
-                newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_000'+i+'.png';
+                //newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_000'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_000'+i+'.png';
-                newstring3='src/dist/images/'+'2before/2before_000'+i+'.png';
-                newstring4='src/dist/images/'+'3afterarrow/3afterarrow_000'+i+'.png';
+                //newstring3='src/dist/images/'+'2before/2before_000'+i+'.png';
+                //newstring4='src/dist/images/'+'3afterarrow/3afterarrow_000'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_000'+i+'.jpg';
-                newstring6='src/dist/images/'+'2afterframe/2afterframe_000'+i+'.png';
+                //newstring6='src/dist/images/'+'2afterframe/2afterframe_000'+i+'.png';
             }else{
-                newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_00'+i+'.png';
+                //newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_00'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_00'+i+'.png';
-                newstring3='src/dist/images/'+'2before/2before_00'+i+'.png';
-                newstring4='src/dist/images/'+'3afterarrow/3afterarrow_00'+i+'.png';
+                //newstring3='src/dist/images/'+'2before/2before_00'+i+'.png';
+                //newstring4='src/dist/images/'+'3afterarrow/3afterarrow_00'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_00'+i+'.jpg';
-                newstring6='src/dist/images/'+'2afterframe/2afterframe_00'+i+'.png';
+                //newstring6='src/dist/images/'+'2afterframe/2afterframe_00'+i+'.png';
             }
-            this.floor1_imageArray.push(newstring);
+            //this.floor1_imageArray.push(newstring);
             this.facade_imageArray.push(newstring2);
-            this.floor2_before_imageArray.push(newstring3);
-            this.floor3_afterArrow_imageArray.push(newstring4);
+            //this.floor2_before_imageArray.push(newstring3);
+            //this.floor3_afterArrow_imageArray.push(newstring4);
             this.suprise_imageArray.push(newstring5);
-            this.floor2_after_imageArray.push(newstring6);
+            //this.floor2_after_imageArray.push(newstring6);
         };
 
 
@@ -691,12 +691,9 @@ $(document).ready(function(){
         var self = this;
         var baseurl = 'src/dist/images/';
         var imagesArray = [
-            baseurl+'3eventbefore.png',
-            baseurl+'f3-1.png',
             baseurl+'maintips.png',
             baseurl+'mask-floor2.png',
             baseurl+'mask-floor3.png',
-            baseurl+'text-2.png',
             baseurl+'0facade_bg.gif',
             baseurl+'0facade_title.gif',
             baseurl+'1eventafter2.gif',
@@ -717,8 +714,15 @@ $(document).ready(function(){
             baseurl+'result3.png',
             baseurl+'share.jpg',
             baseurl+'icon-bgm.png',
+        //    page game
+            baseurl+'floor1frame.png',
+            baseurl+'floo2-before.png',
+            baseurl+'2afterframe.png',
+            baseurl+'3before.png',
+            baseurl+'3after.png',
+            baseurl+'3afterarrow.png',
         ];
-        imagesArray = imagesArray.concat(self.floor1_imageArray).concat(self.facade_imageArray).concat(self.floor2_before_imageArray).concat(self.floor3_afterArrow_imageArray).concat(self.suprise_imageArray).concat(self.floor2_after_imageArray);
+        imagesArray = imagesArray.concat(self.facade_imageArray).concat(self.suprise_imageArray);
         var i = 0;
         new preLoader(imagesArray, {
             onProgress: function(){
@@ -908,7 +912,7 @@ $(document).ready(function(){
                 //$('#floor2 .level').addClass('fadein');
                 //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
                 //do bg animation
-                self.animateForFloor2Before(false);
+                $('#floor2 .l-bg1').addClass('before');
                 $(ele).css('left',minPosX);
                 self.curStep++;
             }
@@ -919,6 +923,7 @@ $(document).ready(function(){
                 $('#floor3 .dialogue').removeClass('show');
                 //after animation
                 $('#floor3 .level').addClass('fadein');
+                $('#floor3 .l-bg').addClass('after');
                 $(ele).css('left',floor3PosXEnd-20);
                 self.curStep++;
             }
@@ -951,7 +956,7 @@ $(document).ready(function(){
         var self = this;
         Common.gotoPin(1);
         self.animateForFloor2Before(true);
-        self.animateForFloor1();
+        //self.animateForFloor1();
         self.enableTrackingAnimated = true;
 
         var container = $('.pin-content');
@@ -968,56 +973,32 @@ $(document).ready(function(){
     };
     controller.prototype.animateForFloor2Before = function (isbefore) {
         var self = this;
-        var j = 0;
+        var i= 0,k=0;
+        var $w = $('#floor2 .l-bg1').width(),
+            $h = $('#floor2 .l-bg1').height();
         var reqAnimateFloor2Before,reqAnimateFloor2After;
-        reqAnimateFloor2Before = new reqAnimate($('#floor2 .l-bg1 img'),{
+        reqAnimateFloor2Before = new reqAnimate($('#floor2 .l-bg1'),{
             fps: 6,
             totalFrames: 20,
             //time: 0,
             processAnimation: function(){
-                var imgName;
-                imgName = self.floor2_before_imageArray[j];
-                if(j>self.floor2_before_imageArray.length-2){
-                    j=0;
+                //var pos = 100*(i%4)/3+'%' + ' '+ 100*(k%5)/4+'%';
+                var pos = -$w*(i%4) + 'px '+ '-'+$h*(k%5)+'px';
+                if((i+1)%4==0){
+                    k++;
                 }
-                j++;
-                $('#floor2 .l-bg1 img').attr('src',imgName);
+                i++;
+                //console.log(pos);
+                $('#floor2 .l-bg1').css('background-position',pos);
+                $('#floor1 .l-bg').css('background-position',pos);
+                $('#floor3 .l-bg').css('background-position',pos);
             },
             doneAnimation: function(){
 
                 //show box and letter
             }
         });
-        //reqAnimateFloor2Before.start();
-
-        reqAnimateFloor2After = new reqAnimate($('#floor2 .l-bg2 img'),{
-            fps: 6,
-            totalFrames: 20,
-            //time: 0,
-            processAnimation: function(){
-                var imgName;
-                imgName = self.floor2_after_imageArray[j];
-                if(j>self.floor2_after_imageArray.length-2){
-                    j=0;
-                }
-                j++;
-                $('#floor2 .l-bg2 img').attr('src',imgName);
-            },
-            doneAnimation: function(){
-
-                //show box and letter
-            }
-        });
-
-        if(isbefore){
-            reqAnimateFloor2Before.start();
-            $('#floor2 .l-bg1').addClass('current');
-            $('#floor2 .l-bg2').removeClass('current');
-        }else{
-            reqAnimateFloor2After.start();
-            $('#floor2 .l-bg2').addClass('current');
-            $('#floor2 .l-bg1').removeClass('current');
-        }
+        reqAnimateFloor2Before.start();
 
 
     };
@@ -1048,18 +1029,22 @@ $(document).ready(function(){
 
     controller.prototype.animateForFloor3 = function () {
         var self = this;
-        var j = 0;
-        var reqAnimateFloor3 = new reqAnimate($('#floor3 .arrow img'),{
+        var i= 0,k=0;
+        var $w = $('#floor2 .l-bg1').width(),
+            $h = $('#floor2 .l-bg1').height();
+        var reqAnimateFloor3 = new reqAnimate($('#floor3 .arrow'),{
             fps: 6,
             totalFrames: 20,
             time: 1,
             processAnimation: function(){
-                var imgName = self.floor3_afterArrow_imageArray[j];
-                if(j>self.floor3_afterArrow_imageArray.length-2){
-                    j=0;
+                var pos = -$w*(i%4) + 'px '+ '-'+$h*(k%5)+'px';
+                if((i+1)%4==0){
+                    k++;
                 }
-                j++;
-                $('#floor3 .arrow img').attr('src',imgName);
+                i++;
+                //console.log(pos);
+                $('#floor3 .arrow').css('background-position',pos);
+
             },
             doneAnimation: function(){
 

@@ -1019,10 +1019,6 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  -moz-transition: opacity 1s;
-  -o-transition: opacity 1s;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
   box-sizing: border-box;
 }
 .pin.current {
@@ -1145,10 +1141,10 @@ html, body {
   width: 3.66rem;
   height: 1.3rem;
   overflow: hidden;
-  -moz-transition: all 4s linear;
-  -o-transition: all 4s linear;
-  -webkit-transition: all 4s linear;
-  transition: all 4s linear;
+  -moz-transition: all 2s linear;
+  -o-transition: all 2s linear;
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
 }
 #pin-game .pin-content .role .role-progress.change {
   -webkit-transform: rotateY(180deg);
@@ -1186,7 +1182,7 @@ html, body {
   position: relative;
   border: #582b0b 1px solid;
   margin-bottom: 0.15rem;
-  width: 7.03rem;
+  width: 7.02rem;
   height: 3.7rem;
   text-align: center;
 }
@@ -1230,6 +1226,13 @@ html, body {
   background: url("../images/1floorbg.jpg") no-repeat;
   background-size: 100%;
 }
+#pin-game .screen.screen-1 .l-bg {
+  width: 100%;
+  height: 100%;
+  background: url("../images/floor1frame.png") no-repeat;
+  background-size: 400% 500%;
+  background-position: 0 0;
+}
 #pin-game .screen.screen-2 {
   background: url("../images/2floorbg.jpg") no-repeat;
   background-size: 100%;
@@ -1242,25 +1245,20 @@ html, body {
   opacity: 1;
   display: block;
 }
+#pin-game .screen.screen-2 .l-bg1 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/floo2-before.png");
+  background-repeat: no-repeat;
+  background-size: 400% 500%;
+  background-position: 0 0;
+}
+#pin-game .screen.screen-2 .l-bg1.after {
+  background-image: url("../images/2afterframe.png");
+}
 #pin-game .screen.screen-2 .pipe {
   left: -0.18rem;
   transform: rotateZ(180deg);
-}
-#pin-game .screen.screen-2 .level {
-  opacity: 0;
-  left: 2rem;
-  top: .2rem;
-  width: 1.86rem;
-  height: 1.7rem;
-  background: url("../images/text-2.png") 0 50% no-repeat;
-  background-size: 100% 300%;
-  -moz-transition: opacity 1s linear;
-  -o-transition: opacity 1s linear;
-  -webkit-transition: opacity 1s linear;
-  transition: opacity 1s linear;
-}
-#pin-game .screen.screen-2 .level.fadein {
-  opacity: 1;
 }
 #pin-game .screen.screen-3 {
   background: url("../images/3floorbg.jpg") no-repeat;
@@ -1271,84 +1269,23 @@ html, body {
   top: 0;
   left: 0;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/3afterarrow.png");
+  background-repeat: no-repeat;
+  background-size: 400% 500%;
+  background-position: 0 0;
 }
-#pin-game .screen.screen-3 .l-bg .p1 {
-  position: absolute;
-  top: 1.18rem;
-  left: 2.98rem;
-  width: 0.26rem;
-  height: 0.58rem;
-  -webkit-transform-origin: 50% 100%;
-  -moz-transform-origin: 50% 100%;
-  -ms-transform-origin: 50% 100%;
-  -o-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
-  -webkit-animation: lefttoright 1s linear infinite;
-  -moz-animation: lefttoright 1s linear infinite;
-  animation: lefttoright 1s linear infinite;
+#pin-game .screen.screen-3 .l-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/3before.png");
+  background-repeat: no-repeat;
+  background-size: 400% 500%;
+  background-position: 0 0;
 }
-@-webkit-keyframes lefttoright {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(10deg);
-  }
-  100% {
-    -webkit-transform: rotate(0deg);
-  }
-}
-@-moz-keyframes lefttoright {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-  50% {
-    -moz-transform: rotate(10deg);
-  }
-  100% {
-    -moz-transform: rotate(0deg);
-  }
-}
-@-o-keyframes lefttoright {
-  0% {
-    -o-transform: rotate(0deg);
-  }
-  50% {
-    -o-transform: rotate(10deg);
-  }
-  100% {
-    -o-transform: rotate(0deg);
-  }
-}
-@keyframes lefttoright {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(10deg);
-    transform: rotate(10deg);
-  }
-  100% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-}
-#pin-game .screen.screen-3 .level {
-  opacity: 0;
-  left: 3.2rem;
-  top: 0.3rem;
-  width: 1.86rem;
-  height: 1.7rem;
-  background: url("../images/text-2.png") 0 0% no-repeat;
-  background-size: 100% 300%;
-  -moz-transition: opacity 1s linear;
-  -o-transition: opacity 1s linear;
-  -webkit-transition: opacity 1s linear;
-  transition: opacity 1s linear;
-}
-#pin-game .screen.screen-3 .level.fadein {
-  opacity: 1;
+#pin-game .screen.screen-3 .l-bg.after {
+  background-image: url("../images/3after.png");
 }
 
 .dialogue {
