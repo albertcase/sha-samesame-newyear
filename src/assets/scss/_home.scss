@@ -352,17 +352,17 @@ html,body{
       background-color: #f4407b;
       background-image: url('../images/dialogue-btn-text.png');
       background-repeat: no-repeat;
-      background-size: auto 300%;
-      background-position:  0.28rem -14%;
+      background-size: 100%;
+      background-position:  0 -14%;
       @include animation(btnAni 1s steps(2) infinite);
       #floor1 &{
-        background-position: 0.28rem 83%;
+        background-position: 0 83%;
       }
       #floor2 &{
-        background-position: 0.28rem -14%;
+        background-position: 0 -14%;
       }
       #floor3 &{
-        background-position: 0.28rem 33%;
+        background-position: 0 33%;
       }
     }
     @include keyframes(btnAni){
