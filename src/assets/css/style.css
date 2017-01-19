@@ -1077,9 +1077,9 @@ html, body {
 }
 #pin-home .title {
   position: absolute;
-  top: -0.3rem;
+  top: 0.3rem;
   width: 7.5rem;
-  height: 12.04rem;
+  height: 1.9rem;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -1088,6 +1088,31 @@ html, body {
   transform: translateX(-50%);
   z-index: 2;
   margin: 0;
+  background: url("../images/title.png") no-repeat;
+  background-size: 100% 2500%;
+  -webkit-animation: titleAni 10s steps(24) infinite;
+  -moz-animation: titleAni 10s steps(24) infinite;
+  animation: titleAni 10s steps(24) infinite;
+}
+@-webkit-keyframes titleAni {
+  100% {
+    background-position: 0 100%;
+  }
+}
+@-moz-keyframes titleAni {
+  100% {
+    background-position: 0 100%;
+  }
+}
+@-o-keyframes titleAni {
+  100% {
+    background-position: 0 100%;
+  }
+}
+@keyframes titleAni {
+  100% {
+    background-position: 0 100%;
+  }
 }
 #pin-home .tips {
   position: absolute;
@@ -1386,16 +1411,16 @@ html, body {
   background-image: url("../images/dialogue-btn-text.png");
   background-repeat: no-repeat;
   background-size: auto 300%;
-  background-position: 0.35rem -10%;
+  background-position: 0% -10%;
   -webkit-animation: btnAni 1s steps(2) infinite;
   -moz-animation: btnAni 1s steps(2) infinite;
   animation: btnAni 1s steps(2) infinite;
 }
 #floor1 .dialogue .dialogue-btn span {
-  background-position: 0.6rem 83%;
+  background-position: 0.3rem 83%;
 }
 #floor2 .dialogue .dialogue-btn span {
-  background-position: 0.6rem -10%;
+  background-position: 0.3rem -14%;
 }
 #floor3 .dialogue .dialogue-btn span {
   background-position: 0.28rem 33%;

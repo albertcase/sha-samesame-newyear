@@ -32,11 +32,11 @@
         var self = this;
         var baseurl = 'src/dist/images/';
         var imagesArray = [
+            baseurl+'title.png',
             baseurl+'maintips.png',
             baseurl+'mask-floor2.png',
             baseurl+'mask-floor3.png',
             baseurl+'0facade_bg.gif',
-            baseurl+'0facade_title.gif',
             baseurl+'1floorbg.jpg',
             baseurl+'2floorbg.jpg',
             baseurl+'3floorbg.jpg',
@@ -77,8 +77,8 @@
                 //
                 $('.preload').remove();
                 $('.container').addClass('fade');
-                self.welcomePage();
-                //self.doGame();
+                //self.welcomePage();
+                self.doGame();
                 //self.getSurprise();
                 self.bindEvent();
             }

@@ -77,12 +77,20 @@ html,body{
   }
   .title{
     position: absolute;
-    top: -0.3rem;
-    @include size(7.5rem,12.04rem);
+    top: 0.3rem;
+    @include size(7.5rem,1.9rem);
     left: 50%;
     @include transform(translateX(-50%));
     z-index: 2;
     margin: 0;
+    background: url('../images/title.png') no-repeat;
+    background-size: 100% 2500%;
+    @include animation(titleAni 10s steps(24) infinite);
+    @include keyframes(titleAni){
+      100%{
+        background-position: 0 100%;
+      }
+    }
   }
   .tips{
     position: absolute;
@@ -345,13 +353,13 @@ html,body{
       background-image: url('../images/dialogue-btn-text.png');
       background-repeat: no-repeat;
       background-size: auto 300%;
-      background-position: 0.35rem -10%;
+      background-position: 0% -10%;
       @include animation(btnAni 1s steps(2) infinite);
       #floor1 &{
-        background-position: 0.6rem 83%;
+        background-position: 0.3rem 83%;
       }
       #floor2 &{
-        background-position: 0.6rem -10%;
+        background-position: 0.3rem -14%;
       }
       #floor3 &{
         background-position: 0.28rem 33%;
