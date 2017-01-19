@@ -158,9 +158,9 @@ html,body{
   }
   .screen{
     position: relative;
-    border: #582b0b 1px solid;
+    //border: #582b0b 1px solid;
     margin-bottom: 0.15rem;
-    width: 7.02rem;
+    width: 7.03rem;
     height: 3.7rem;
     text-align: center;
     .l-bg{
@@ -168,6 +168,8 @@ html,body{
       left: 0;
       top: 0;
       z-index: 2;
+      width: 7.03rem;
+      height: 3.7rem;
     }
     //.l-bg2{
     //  position: absolute;
@@ -198,10 +200,24 @@ html,body{
       height: 2.9rem;
       left: 3.2rem;
       z-index: 3;
+      background-image: url("../images/1eventbefore.png");
+      background-repeat: no-repeat;
+      background-size: 2000% 100%;
+      background-position: 0 0;
+      &.before{
+        @include animation(levelAni 5s steps(19) infinite);
+      }
       &.after{
         left: 2.4rem;
         width: 2.98rem;
         height: 4.8rem;
+        background-image: url("../images/1eventafter.png");
+        @include animation(levelAni 5s steps(19) 2 forwards);
+      }
+      @include keyframes(levelAni){
+        100%{
+          background-position: 100% 0;
+        }
       }
     }
 
@@ -210,8 +226,6 @@ html,body{
       background: url("../images/1floorbg.jpg") no-repeat;
       background-size: 100%;
       .l-bg{
-        width: 100%;
-        height: 100%;
         background: url("../images/floor1frame.png") no-repeat;
         background-size: 400% 500%;
         background-position: 0 0;
@@ -221,16 +235,6 @@ html,body{
       background: url("../images/2floorbg.jpg") no-repeat;
       background-size: 100%;
       .l-bg{
-        opacity: 0;
-        display: none;
-        &.current{
-          opacity: 1;
-          display: block;
-        }
-      }
-      .l-bg1{
-        width: 100%;
-        height: 100%;
         background-image: url("../images/floo2-before.png");
         background-repeat: no-repeat;
         background-size: 400% 500%;
@@ -260,8 +264,6 @@ html,body{
         background-position: 0 0;
       }
       .l-bg{
-        width: 100%;
-        height: 100%;
         background-image: url("../images/3before.png");
         background-repeat: no-repeat;
         background-size: 400% 500%;
@@ -514,9 +516,9 @@ html,body{
   z-index: 100;
   background: green;
   border-radius: 100%;
-  &.play{
-    @include animation(circleTransform 3s linear infinite);
-  }
+  //&.play{
+  //  @include animation(circleTransform 3s linear infinite);
+  //}
   @include keyframes(circleTransform){
     0%{
       @include transform(rotate(0deg));

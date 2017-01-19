@@ -61,8 +61,6 @@
             baseurl+'mask-floor3.png',
             baseurl+'0facade_bg.gif',
             baseurl+'0facade_title.gif',
-            baseurl+'1eventafter2.gif',
-            baseurl+'1eventbefore2.gif',
             baseurl+'1floorbg.jpg',
             baseurl+'2floorbg.jpg',
             baseurl+'3floorbg.jpg',
@@ -263,8 +261,7 @@
             if(self.curStep==0){
                 $('#floor1 .dialogue').removeClass('show');
                 //after animation
-                $('#floor1 .level').addClass('after');
-                $('#floor1 .level img').attr('src','/src/dist/images/1eventafter2.gif');
+                $('#floor1 .level').removeClass('before').addClass('after');
                 $(ele).css('left',maxPosX);
                 self.curStep++;
             }
@@ -320,7 +317,7 @@
     controller.prototype.doGame = function(){
         var self = this;
         Common.gotoPin(1);
-        self.animateForFloor2Before(true);
+        self.animateForFloor2Before();
         //self.animateForFloor1();
         self.enableTrackingAnimated = true;
 
@@ -339,8 +336,8 @@
     controller.prototype.animateForFloor2Before = function (isbefore) {
         var self = this;
         var i= 0,k=0;
-        var $w = $('#floor2 .l-bg1').width(),
-            $h = $('#floor2 .l-bg1').height();
+        var $w = $('#floor2').width(),
+            $h = $('#floor2').height();
         var reqAnimateFloor2Before,reqAnimateFloor2After;
         reqAnimateFloor2Before = new reqAnimate($('#floor2 .l-bg1'),{
             fps: 6,
