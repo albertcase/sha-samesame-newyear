@@ -1,52 +1,28 @@
 ;(function(){
 
     var controller = function(){
-        this.enableMove = true;
-        this.firstStop = true;
-        this.secondStop = false;
-        this.thirdStop = false;
         this.enableTrackingAnimated = false;
         /*each transition end set to ++*/
         /*we have 8 transition end for chicken element*/
         this.curStep = 0;
-        //this.firstStop = true;
         this.floor1_imageArray = [];
         this.facade_imageArray = [];
-        this.floor2_before_imageArray = [];
-        this.floor2_after_imageArray = [];
-        this.floor3_afterArrow_imageArray = [];
         this.suprise_imageArray = [];
         var ArrLength=120;
-        var newstring='',newstring2='',newstring3='',newstring4='',newstring5='',newstring6='';
+        var newstring2='',newstring5='';
         for(var i=0;i<ArrLength;i=i+6){
             if(i<10){
-                //newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_0000'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_0000'+i+'.png';
-                //newstring3='src/dist/images/'+'2before/2before_0000'+i+'.png';
-                //newstring4='src/dist/images/'+'3afterarrow/3afterarrow_0000'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_0000'+i+'.jpg';
-                //newstring6='src/dist/images/'+'2afterframe/2afterframe_0000'+i+'.png';
             }else if(i>9 && i<100){
-                //newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_000'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_000'+i+'.png';
-                //newstring3='src/dist/images/'+'2before/2before_000'+i+'.png';
-                //newstring4='src/dist/images/'+'3afterarrow/3afterarrow_000'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_000'+i+'.jpg';
-                //newstring6='src/dist/images/'+'2afterframe/2afterframe_000'+i+'.png';
             }else{
-                //newstring='src/dist/images/'+'floor_withoutbg/1floorwithoutbg_00'+i+'.png';
                 newstring2='src/dist/images/'+'facade_alone/facadealone_00'+i+'.png';
-                //newstring3='src/dist/images/'+'2before/2before_00'+i+'.png';
-                //newstring4='src/dist/images/'+'3afterarrow/3afterarrow_00'+i+'.png';
                 newstring5='src/dist/images/'+'endingpage_frame2/endingpage_00'+i+'.jpg';
-                //newstring6='src/dist/images/'+'2afterframe/2afterframe_00'+i+'.png';
             }
-            //this.floor1_imageArray.push(newstring);
             this.facade_imageArray.push(newstring2);
-            //this.floor2_before_imageArray.push(newstring3);
-            //this.floor3_afterArrow_imageArray.push(newstring4);
             this.suprise_imageArray.push(newstring5);
-            //this.floor2_after_imageArray.push(newstring6);
         };
 
 
@@ -280,9 +256,6 @@
             if(self.curStep ==3){
                 $('#floor2 .dialogue').removeClass('show');
                 //after animation
-                //$('#floor2 .level').addClass('fadein');
-                //$('#floor2 .level img').attr('src','/src/dist/images/1eventafter2.gif');
-                //do bg animation
                 $('#floor2 .l-bg1').addClass('after');
                 $(ele).css('left',minPosX);
                 self.curStep++;
@@ -327,7 +300,6 @@
         var self = this;
         Common.gotoPin(1);
         self.animateForFloor2Before();
-        //self.animateForFloor1();
         self.enableTrackingAnimated = true;
 
         var container = $('.pin-content');
@@ -347,6 +319,11 @@
         var i= 0,k=0;
         var $w = $('#floor2').width(),
             $h = $('#floor2').height();
+        var aaa = $w*4+'px '+$h*5+'px';
+        $('#floor2 .l-bg1').css('background-size',aaa);
+        $('#floor1 .l-bg').css('background-size',aaa);
+        $('#floor3 .l-bg').css('background-size',aaa);
+        //background-size
         var reqAnimateFloor2Before,reqAnimateFloor2After;
         reqAnimateFloor2Before = new reqAnimate($('#floor2 .l-bg1'),{
             fps: 6,
@@ -373,36 +350,14 @@
 
 
     };
-    controller.prototype.animateForFloor1 = function () {
-        var self = this;
-        var j = 0;
-        var reqAnimateNow = new reqAnimate($('#floor1 .l-bg img'),{
-            fps: 6,
-            totalFrames: 20,
-            //time: null,
-            processAnimation: function(){
-                var imgName = self.floor1_imageArray[j];
-                if(j>self.floor1_imageArray.length-2){
-                    j=0;
-                }
-                j++;
-                //console.log('test');
-                $('#floor1 .l-bg img').attr('src',imgName);
-            },
-            doneAnimation: function(){
-
-                //show box and letter
-            }
-        });
-        reqAnimateNow.start();
-
-    };
 
     controller.prototype.animateForFloor3 = function () {
         var self = this;
         var i= 0,k=0;
         var $w = $('#floor2 .l-bg1').width(),
             $h = $('#floor2 .l-bg1').height();
+        var aaa = $w*4+'px '+$h*5+'px';
+        $('#floor3 .arrow').css('background-size',aaa);
         var reqAnimateFloor3 = new reqAnimate($('#floor3 .arrow'),{
             fps: 6,
             totalFrames: 20,

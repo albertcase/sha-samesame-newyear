@@ -158,25 +158,20 @@ html,body{
   }
   .screen{
     position: relative;
-    //border: #582b0b 1px solid;
     margin-bottom: 0.15rem;
     width: 7.03rem;
     height: 3.7rem;
+    //width: 7rem;
+    //height: 3.8rem;
+
     text-align: center;
     .l-bg{
       position: absolute;
       left: 0;
       top: 0;
       z-index: 2;
-      width: 7.03rem;
-      height: 3.7rem;
+      @include size(100%,100%);
     }
-    //.l-bg2{
-    //  position: absolute;
-    //  left: 0;
-    //  top: 0;
-    //  z-index: 2;
-    //}
     .pipe{
       position: absolute;
       right: -0.18rem;
@@ -517,9 +512,9 @@ html,body{
   border-radius: 100%;
   background: url('../images/music.png') no-repeat;
   background-size: 100%;
-  background-position: 0 0;
+  background-position: 0 100%;
   &.play{
-    background-position: 0 100%;
+    background-position: 0 0;
     //@include animation(circleTransform 3s linear infinite);
   }
   @include keyframes(circleTransform){
