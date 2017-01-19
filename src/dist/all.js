@@ -711,7 +711,7 @@ $(document).ready(function(){
             baseurl+'result2.png',
             baseurl+'result3.png',
             baseurl+'share.jpg',
-            baseurl+'icon-bgm.png',
+            baseurl+'music.png',
         //    page game
             baseurl+'floor1frame.png',
             baseurl+'floo2-before.png',
@@ -719,6 +719,8 @@ $(document).ready(function(){
             baseurl+'3before.png',
             baseurl+'3after.png',
             baseurl+'3afterarrow.png',
+            baseurl+'1eventafter.png',
+            baseurl+'1eventbefore.png',
         ];
         imagesArray = imagesArray.concat(self.facade_imageArray).concat(self.suprise_imageArray);
         var i = 0;

@@ -510,15 +510,18 @@ html,body{
 //for bgm
 .icon-bgm{
   position: absolute;
-  @include size(1rem,1rem);
-  right: 0.1rem;
+  @include size(1.05rem,0.56rem);
+  left: 0.1rem;
   top: 0.1rem;
   z-index: 100;
-  background: green;
   border-radius: 100%;
-  //&.play{
-  //  @include animation(circleTransform 3s linear infinite);
-  //}
+  background: url('../images/music.png') no-repeat;
+  background-size: 100%;
+  background-position: 0 0;
+  &.play{
+    background-position: 0 100%;
+    //@include animation(circleTransform 3s linear infinite);
+  }
   @include keyframes(circleTransform){
     0%{
       @include transform(rotate(0deg));
