@@ -65,10 +65,11 @@ html,body{
 
 //for loading
 .loading-img{
-  @include size(2.06rem,2.98rem);
+  @include size(1.06rem,1.52rem);
+  margin: 0 auto;
   background: url('../images/loading.png') no-repeat;
-  background-size: 100% 400%;
-  @include animation(loading 1s steps(3) infinite);
+  background-size: 100% 500%;
+  @include animation(loading 1s steps(4) infinite);
   @include keyframes(loading){
     100%{
       background-position: 0 100%;

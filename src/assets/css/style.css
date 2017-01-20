@@ -1066,13 +1066,14 @@ html, body {
 }
 
 .loading-img {
-  width: 2.06rem;
-  height: 2.98rem;
+  width: 1.06rem;
+  height: 1.52rem;
+  margin: 0 auto;
   background: url("../images/loading.png") no-repeat;
-  background-size: 100% 400%;
-  -webkit-animation: loading 1s steps(3) infinite;
-  -moz-animation: loading 1s steps(3) infinite;
-  animation: loading 1s steps(3) infinite;
+  background-size: 100% 500%;
+  -webkit-animation: loading 1s steps(4) infinite;
+  -moz-animation: loading 1s steps(4) infinite;
+  animation: loading 1s steps(4) infinite;
 }
 @-webkit-keyframes loading {
   100% {
