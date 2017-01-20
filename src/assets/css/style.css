@@ -1071,9 +1071,9 @@ html, body {
   margin: 0 auto;
   background: url("../images/loading.png") no-repeat;
   background-size: 100% 500%;
-  -webkit-animation: loading 1s steps(4) infinite;
-  -moz-animation: loading 1s steps(4) infinite;
-  animation: loading 1s steps(4) infinite;
+  -webkit-animation: loading 2s steps(4) infinite;
+  -moz-animation: loading 2s steps(4) infinite;
+  animation: loading 2s steps(4) infinite;
 }
 @-webkit-keyframes loading {
   100% {

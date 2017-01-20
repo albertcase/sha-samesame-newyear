@@ -69,7 +69,7 @@ html,body{
   margin: 0 auto;
   background: url('../images/loading.png') no-repeat;
   background-size: 100% 500%;
-  @include animation(loading 1s steps(4) infinite);
+  @include animation(loading 2s steps(4) infinite);
   @include keyframes(loading){
     100%{
       background-position: 0 100%;
